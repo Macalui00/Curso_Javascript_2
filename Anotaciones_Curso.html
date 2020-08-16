@@ -394,9 +394,471 @@
             Y haciendo lo mismo con const:
             console.log(shrimp); //Error de referencia, no podemos acceder a shrimp antes de su inicializacion.
             let shrimp = "Harlequin shrimp";
-            obtengo el mismo resultado. 
+            obtengo el mismo resultado.
+
+            Ahora en el caso de funciones:
+
+            function aullar(){
+                console.log("AUUUUUU");
+            }
+            aullar(); //Funciona
+
+            Y si invierto el orden:
+            aullar(); //Funciona igual 
+            function aullar(){
+                console.log("AUUUUUU");
+            }
+
+            Esto funciona AL MENOS PARA LAS DECLARACIONES DE FUNCIONES.
+
+            Pero, en caso de EXPRESIONES DE FUNCIONES:
+            var hoot = function (){
+                console.log("iuujuuuu")
+            }
+            hoot(); //Funciona
+
+            hoot(); //No funciona
+            var hoot = function (){
+                console.log("iuujuuuu")
+            }
+            
+            El tema con este ultimo caso es que la variable existe, pero no sabe el valor:
+            console.log(hoot); //undefined
+            var hoot = function (){
+                console.log("iuujuuuu")
+            }
+            Entonces si trato de ejecutar hoot() esta tratando de llamar a un undefined.
+
+            En el caso de let, tengo un error diferente:
+            hoot();
+            var hoot = function (){
+                console.log("iuujuuuu")
+            }
         </p>
 
+        <h2>ForEach</h2>
+
+        <p> Acepta una funcion callback. Llama a la funcion una vez por elemento en el array.
+            Es un metodo del array:
+
+            const nums = [9,8,7,6,5,4,3,2,1];
+
+            nums.forEach(function (n){
+                console.log(n*n) //Muestra cada elemento del array elevado a la 2
+            });
+
+            nums.forEach(function (el){
+                if (el % 2 ===){ //Muestra solo los elementos pares
+                    console.log(el)
+                }
+            });
+
+            function printTriple(n){
+                console.log(n*3);
+            }
+
+            //Usando una funcion predefinida:
+            nums.forEach(printTriple);
+
+            //Usando el index:
+            nums.forEach(function (num, idx) {
+                console.log(idx, num);
+            });
+
+            //realizando un caso más complejo donde utilizamos un array de objetos:
+            const books = [{
+                title: 'Good Omens',
+                authors: ['Terry Pratchett', 'Neil Gaiman'],
+                rating: 4.25
+            },
+            {
+                title: 'Bone: The Complete Edition',
+                authors: ['Jeff Smith'],
+                rating: 4.42
+            },
+            {
+                title: 'American Gods',
+                authors: ['Neil Gaiman'],
+                rating: 4.11
+            },
+            {
+                title: 'A Gentleman in Moscow',
+                authors: ['Amor Towles'],
+                rating: 4.36
+            }
+            ]
+
+            Supongamos que quiero imprimir el titulo de cada libro:
+            books.forEach(function(book){
+                console.log(book.title.toUpperCase());
+            });
+
+            Puedo hacer exactamente lo mismo con un for:
+            for(let book of books){
+                console.log(book.title.toUpperCase());
+            }
+
+            Son diferentes mas alla de su sintaxis, porque el primero tiene una funcion y el segundo es simplemente un bloque. 
+
+            Un for loop regular:
+            for(let i = 0; i (menor) books.length; i++){
+                console.log(books[i].title.toUpperCase());
+            }
+
+            Pero obviamente la mejor manera es la del forEach, ya que me olvido de los index.
+
+            Hay otra cosa más que hay que saber del forEach. Tambien podemos agregar un segundo parametro a nuestro callback
+            si queremos usar el index.
+            numbers.forEach(function(num, idx){
+                console.log(idx, num);
+            });
+        </p>
+
+        <h2>Map</h2>
+
+        <p>
+            Crea un nuevo array con los resultado de llamar un callback a cada elemento de un array. 
+            const texts = ['guau', 'mmm', 'ooh', 'grr'];
+            const caps = text.map(function(t){
+                return t.toUpperCase();
+            });
+            texts;
+            caps;
+        </p>
+
+        <h2> Arrow functions</h2>
+        <p> Alternatuva sintacticamente compacta a una expresion de funcion regular.
+            Internet explorer no tiene soporte a las mismas. 
+
+            Es otra forma de escribir funciones:
+            Arrow functions no fueron introducidas porque son mas compactas o simples, hay otra diferencia, de como se comportan. 
+            
+            2 reglas cuando escribis arrow functions:
+                - Parentesis son opcionales si hay solo un parametro:
+                  const square = x => {
+                      return x * x;
+                  }
+                - Usar parentesis vacios para funciones sin parametros:
+                  const singASong = () => {
+                      return "LA LA LA LA LA";
+                  }
+        </p>
+
+        <h2>Arrow functions: Implicit returns</h2>
+        <p> Implicit returns: Solo funcionan en ciertos escenarios. Agregar un implicit return a una funcion significa que no tienes que escribir
+            la palabra return. Y en algunos escesarios puedes escribir una linea de arrow function. 
+        </p>
+
+        <h2>Find</h2>
+        <p>Otro de los metodos del array que espera un callback.
+            Retorna el valor de el primer elemento en un array que satisface la funcion testeadora provista:
+
+            let movies = {
+                "The Fantastic Four",
+                "The Avengers",
+                "Dr. Strange",
+                "Captain America"
+            }
+
+            let movie = movies.find(movie => {
+                return movie.includes("Dr.")
+            });
+
+            let movie2 = movies.find(m => m.indexOf("The") === 0);
+        
+            La funcion que le pasamos es necesario que retorne verdadero o falso.
+            SOLO RETORNA UN VALOR, INCLUSO SI HAY 10 MATCHEOS, SOLO RETORNARÁ EL PRIMER MATCH. 
+
+        </p>
+
+        <h2>Filter</h2>
+        <p> Esta es otro metodo de los arrays que espera que le pases un callback.
+            Crea un nuevo array con todos los elementos que pasan el testeo implementado por
+            la funcion provista.
+
+            const nums3 = [9,8,7,6,5,4,3,2,1];
+            const odds = nums3.filter(n => {
+                return n % 2 === 1; //Nuestra funcion callback retorna verdadero o falso 
+            });
+
+            const smallNums = nums.filter(n => n (menor) 5);
+
+        </p>
+
+        <h2>Every y Some</h2>
+        <p> Ambos metodos son metodos booleanos. 
+            
+            Every testea todos los elementos en un array que pasen la funcion provista.
+            Retorna un valor booleano.
+
+            const words = ["dog", "pig", "log", "bag", "wag"];
+
+            words.every(word =>{
+                return word.length === 3; //Si todas las palabras tienen 3 letras: true
+            })
+
+            words.every(word => word[0] === 'd'); //Si cada palabra empieza con una "d": retorna false
+
+            words.every(w => {
+                let last_letter = w[w.length - 1]; 
+                return last_letter === "g"; //Si cada palabra termina con una "g": true
+            });
+
+            Osea lo que hace es que analiza cada elemento del array con la funcion 
+            y si todo el array da true, every retorna true sino retorna false.
+
+            Sirve para verificar si todos los elementos del array cumplen con una condicion. 
+
+            Some: similar a every pero retorna verdader si cualquiera de los elementos del array pasa
+            la funcion tester.
+
+            const words = ["dog", "jello", "log", "cupcake", "bag", "wag"];
+            
+            words.some(word => {
+                return word.length > 4;
+            })
+
+            words.some(word => word[0] === "Z");
+
+            words.some(w => w.includes("cake"));
+        </p>
+        
+        <h2>Sort</h2>
+        <p> Funciona de una manera un poco extraña, porque si tenemos un array de numeros con decimales:
+            no me los ordena correctamente.
+
+            const precios = [500.00, 450.50, 34.00, 12.99, 55.90];
+            console.log(precios.sort);
+        </p>
+
+        <h2>Reduce</h2>
+        <p>Lo que hace es tomar cada elemento del array y en base a eso retorna un solo valor. 
+            Por ahi los ejemplos mas claros serian el de sumar, restar o multiplicar, pero no necesariamente,
+            son los usos que se le de en la vida real, por ejemplo, buscar el numero maximo dentro del array.
+
+            Entoces reduce es un metodo de array donde nosotros le pasamos una funcion callback y esa funcion callback, necesita seguir
+            un formato particular. Este formato es el siguiente:
+            Un callback con al menos dos parametros. La documentacion llama primero al primer parametro:
+            
+            [3,5,7,9,11].reduce((accumulator, currentValue) => {
+                return accumulator + currentValue; //accumulator representa el acumulador y el current value representa cada elemento individual en el array
+            });
+
+            No importa los nombres que les pongas, pero el primero de ellos se encargara de acumular el total o el valor acumulado, y el segundo parametro almacena el valor individual del elemento del array. 
+
+            Cuando usamos reduce podemos tambien pasar un valor inicial con el cual empezar. 
+            arr.reduce(callback, initialValue)
+
+            Ahora vamos a ver una manera completamente diferente de usar reduce donde podemos contar los resultados desde un array, podemos agrupar diferentes valores en un array usando un objeto. 
+
+        </p>
+
+        <h2>Default Parameters</h2>
+        <p> En el pasado se podía poner un default parameter en una funcion, en caso de que por ejemplo, si una funcion tiene dos parametros e ingresas uno solo, te siga retornando algun valor.
+            Ejemplo:
+
+            function multiply (x,y){
+                return x*y;
+            }
+
+            si ingreso por consola:
+            multiply(5)
+            me retorna NaN
+
+            para que podamos asignarle un valor de default, antes, manualmente tenias que hacer lo siguiente:
+            function multiply(x, y){
+                if (typeof y === "undefined"){
+                    y = 1;
+                }
+                return x*y;
+            }
+
+            Hay una manera más corta de hacer esto:
+            
+            function multiply(x, y){
+                y = typeof y === "undefined" ? 1 : y;
+                return x*y;
+            }
+            Esta fue una manera pero no es muy amigable. 
+            Hay una manera mucho mejor, gracias a la nueva manera de sintaxis de default parameters. 
+
+            function multiply (a, b = 1){
+                return a * b;
+            }
+
+            Algo que es absolutamente importante es que el orden de los parametros si realmente importa. 
+            const greet2 = (person, greeting = 'hi', punctuation = '!') =>{
+                console.log(`${greeting}, ${person}${punctuation}`);
+            }
+            
+            Esto funcionara si pongo los tres parametros pero no funcionara si pongo por ejemplo:
+            greet2("maria", "?")
+
+            Otra cosa que no puedo hacer es ponerle un valor de default al primer parametro y no al segundo: me retornara NaN en el caso de multiply. 
+
+        </p>
+
+        <h2>Spread</h2>
+        <p> Todo lo de esta seccion no tiene soporte en internet explorer.
+            Spread syntax permite un iterable como un array de ser expandido en lugares donde cero o más argumentos (de llamada de funciones) o elementos (de array literals) son esperados,
+            o una expresion objeto de ser expandido en lugares donde cero o más pares de valores clave (de objetos literales) son esperados.
+            Hay tres escenarios:
+                - Spread en una llamada de funcion
+                - Spread en un array literal
+                - Spread en un objeto literal
+            Y todos tienen que ver con expandir algun ignorable dentro de algun otro lugar, algun otro destino. 
+            
+            Lo primero que veremos es spread en una llamada de funcion:
+            Expande un iterable (array, string, etc.) dentro de una lista de argumentos.
+            Ejemplo:
+
+            nums = [9,3,2,8];
+            Math.max(nums); //NaN
+
+            usando spread:
+            Math.max(...nums); //9
+            //Seria lo mismo que llamar:
+            //Math.max(9,3,2,8)
+
+            Entonces, spread sintacticamente es siempre tres puntos suspensivos (...) cuando
+            estamos usando una llamada de funcion, en un array literals y en un objeto literals. 
+
+            Cuando se usa dentro del parentesis en una llamada de funcion tomará eso y lo rompera
+            en argumentos individuales en vez de pasarlo como un solo argumento.  
+
+            caso array literals:
+            const num1 = [1,2,3];
+            const num2 = [4,5,6];
+
+            [...nums1, ...nums2];
+            //[1,2,3,4,5,6]
+
+            ["a", "b", ... nums2];
+            //["a", "b", 4, 5, 6]
+
+            [...nums1, ...nums2, 7, 8, 9];
+            //[1,2,3,4,5,6,7,8,9]
+
+            Crea un nuevo array usando un array existente. Expande los elementos desde un array en un nuevo array. 
+            De hecho, uno de los usos mas comunes del spread es hacer una copia de un array:
+            const nums1Copia = [...nums1]
+
+            Podemos hacer algo interesante con los strings:
+            "abcdefg".split("") //["a","b", "c", "d","e","f", "g"]
+
+            [..."abcdefg"] //obtenemos lo mismo:["a","b", "c", "d","e","f", "g"]
+
+            Caso objetos literals:
+
+            const feline = {legs: 4, family: "Felidae"};
+            const canine = {legs: 4, family: "Caninae", furry: true};
+
+            const dog = { ...canine, isPet: true};
+            //{legs: 4, family: "Caninae", furry: true, isPet: true}
+
+            const lion = { ...feline, genus: "Panthera"};
+            // {legs: 4, family: "Felidae", genus: "Panthera"}
+
+            const catDog = {...feline, ...canine};
+
+            copia propiedades desde un objeto en otro objeto literal. 
+            Entonces en efecto, podemos crear copias de objetos o podemos crear combinaciones de objetos, podemos ponerlos juntos... 
+
+            Que pasa cuando tenemos caracteristicas conflictivas, ejemplo dos objetos tienen legs: 4?
+            Se sobrescriben una sobre otra, por lo que nos queda una sola propiedad de legs.
+            Pero imaginemos que tenemos un objeto que en vez de 4 patas tiene 3:
+
+            const tripod = {
+                ...canine,
+                legs: 3
+            }
+            //setea las piernas en 3, la razon es que el orden importa, entonces, nosotros copiamos las propiedades de camino primero, 
+            //y despues de esto legs es actualizado a 3. 
+            //pero si hago lo siguiente:
+
+            const tripod = {
+                ...canine,
+                legs: 3,
+                ...canine
+            }//Se setea de nuevo legs a 4
+
+            Tambien podemos clonar un objeto, por lo que no tendremos la misma referencia.
+
+            const catDogClone = {
+                ...catDog
+            }
+
+            catDogClone === catDog //false 
+
+            Solamente en este contexto podemos expandir objetos. 
+
+            {...[4,5,6]}
+            {0: 4, 1: 5, 2:6}
+        </p>
+
+        <h2>The arguments object (not new)</h2>
+        <p> Parece similar al spread, pero en realidad, es lo opuesto. Lo que hace es que en vez de separar los datos en argumentos diferentes
+            o en nuevos objetos o arrays, en realidad, junta cosas dentro de un solo array. Entonces, es usado cuando queremos hacer funciones
+            que aceptan un numero ilimitado de argumentos o un numero de argumentos variables. Ejemplo:
+            Math.max(), podemos pasarle la cantidad de argumentos que queramos. Entonces, como podemos escribir esto?
+            Como podemos escribir codigo para una funcion así? 
+
+            Hay otra manera de hacer eso sin REST que es los argumentos de objeto. 
+            En cada funcion tenemos acceso a algo llamado argumentos, es un nombre especial y es como si luciera como un array pero no lo es. 
+            No necesitamos cosas como push y pop y todos los metodos de array que puedas querer. Pero, es una lista donde tenemos indices y podemos
+            loopear sobre el con un loop for. Esta forma no es genial pero existe. 
+            
+        </p>
+
+        <h2>REST</h2>
+        <p> Se representa con tres puntos suspensivos como spread pero los ponemos dentro de la lista de parametros de la definicion de una funcion
+            y lo que hace es que colecta todos los argumentos o los argumentos restantes dentro de un actual array, no un array como objeto, no una imitacion de un array, un
+            array real. 
+
+            Para escribir la funcion suma pero con rest...
+
+            El orden en el que ponemos los parametros importa, no podemos poner la lista de argumentos antes de algun argumento esperado, ni podemos poner dos listas de argumentos rest
+            La otra cosa es que podemos usarlo en un arrow function
+
+        </p>
+
+        <h2>Destructuring</h2>
+        <p> Una sintaxis corta y limpia de "unpack":
+                - valores desde arrays
+                - propiedades desde objetos
+            en distintas variables.
+
+            Se utiliza en varias formas distintas, una opcion, que es la que se verá primero es la de descructuring arrays. 
+
+            Cuando destructuramos un array, podemos desempacar valores especificos fuera de un array hacia nuevas variables. 
+
+            Podemos utilizar destructuring para "desempacar" valores desde un objeto a variables. Pero la principal diferencia,
+            con el caso de los arrays, es que en los arrays podemos desempacar basados en la posicion del index. 
+            En el caso de los objetos hacemos las variables en base a los nombres de las propiedades. 
+        
+            Nested Destructuring. 
+
+            Hay un lugar mas donde vas a poder ver destructuring que es dentro de una definicion de funcion, donde los parametros estan listados. 
+            Podemos usar la misma destructuring sintaxis pero poniendola dentro de los parentesis de una definicion de funcion que lo que hará 
+            es extraer o desempacar valores de los argumentos pasados.
+        </p>
+
+        <h2>Shorthand properties</h2>
+        <p> Es algo introducido en 2015 y no presenta soporte en Internet Explorer. 
+            Es una buena y facil manera de crear un objeto literal cuando tiene variables y quieres crear una propiedad donde el key name es el
+            nombre de tu varianle y el valor es el valor en la variable.
+        </p>
+
+        <h2>Computed properties</h2>
+        <p> Es solo una mejor de la sintaxis de los objetos literales donde podemos agregar una propiedad con una clave dinamica.
+            (CONTINUAR!!!!!!!!)
+        </p>
+
+        <h2></h2>
+        <p></p>
+
+        <h2></h2>
+        <p></p>
         <script src="Anotaciones_Curso_Javascript.js"></script> 
     
     </body>
