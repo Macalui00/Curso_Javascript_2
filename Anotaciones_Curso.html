@@ -851,7 +851,71 @@
 
         <h2>Computed properties</h2>
         <p> Es solo una mejor de la sintaxis de los objetos literales donde podemos agregar una propiedad con una clave dinamica.
-            (CONTINUAR!!!!!!!!)
+        </p>
+
+        <h2>Methods</h2>
+        <p> Podemos agregar funciones como propiedades en objetos.
+            
+            const math = {
+                multiply: function (x,y) {
+                    return x*y;
+                },
+                divide: function(x,y) {
+                    return x / y;
+                },
+                square: function(x){
+                    return x*x;
+                }
+            }
+
+            Una de las primeras razones por las que podemos hacer esto es para agrupar funciones 
+            para agrupar funcionalidad con alguna unidad que brinde un poco de cohesion. 
+
+        </p>
+
+        <h2>Method Shorthand Syntax</h2>
+        <p>Podemos utilizar arrow functions en objetos, aunque no es muy comun por razones que ahora veremos.
+            Pero ademas, hay un nueva y genial shorthand para añadir metodos a un objeto.
+
+            const math = {
+                blah: "Hi!",
+                add(x,y){
+                    return x+y;
+                },
+                multiply(x,y){
+                    return x*y;
+                }
+            }
+
+            math.add(5,5); //10
+
+            Ya no tenemos que hacer: la clave dos puntos el valor -> clave: valor 
+        </p>
+
+        <h2>This</h2>
+        <p> El this es muy importante porque nos permite señalar a las propiedades o metodos de un objeto.
+            El valor de this depende de el contexto de invocacion de la funcion en la cual esta siendo usada. 
+            Lo que significa que el valor cambiará dependiendo de como la funcion esta realmente siendo ejecutada,
+            no solo donde lo esccribiste.
+
+        </p>
+
+        <h2>The Annoyomatic Demo: Arrow functions y This</h2>
+        <p> Para profundizar mas en el tema de arrow functions y el This.
+            
+            ARROW FUNCTION NO TIENEN SU PROPIO THIS, EL THIS EN UN ARROW FUNCTION NUNCA CAMBIO DESDE EL THIS DE SU PADRE O
+            DE SU CERCANO THIS.
+
+            Esto demuestra que a veces es mejor utilizar arrow functions porque no queremos un nuevo this. 
+        </p>
+
+        <h2>DOM Manipulation</h2>
+        <p> DOM o Document Object Model es nuestra ventana dentro de HTML y CSS y de la pagina web en general, a traves de Javascript.
+            Podemos cambiar cosas en la página web. 
+            
+            El objeto doucmento es nuestro punto de entrada al mundo del DOM. Contiene representaciones de todo el contenido en una pagina, más tonelada de metodos muy utiles y propiedades.
+            
+        
         </p>
 
         <h2></h2>

@@ -331,12 +331,12 @@ const shortForm = books.filter( book => (
 console.log(librosFantasticos, shortForm);
 
 const query = 'The';
-const results = books.filter(book => {
+const results1 = books.filter(book => {
     const title = book.title.toLowerCase();
     return title.includes(query.toLowerCase())
 });
 
-console.log(results);
+console.log(results1);
 
 /*-----------------------------------------------------------------------------------------------------*/
 
@@ -706,3 +706,201 @@ const getStats = (arr) => { //Paso un array y calculo:
 const reviews = [4.5,5.0, 3.44,2.8, 3.5, 4.0,3.5];
 
 const stats = getStats(reviews);
+
+/*-----------------------------------------------------------------------------------------*/
+
+const role = "host";
+const person = "Julia Ermidez";
+
+//Por ejemplo, quiero un objeto que tenga una clave seteada con el nombre role y que el valor de la misma sea el de persona. 
+
+//Si hago mi objeto:
+// const team = {
+//     role: person //No es lo que queremos porque role se convierte en una cadena y no se verifica si corresponde a una variable 
+// }
+
+//Lo que hicimos anteriormente, para poder hacer que esto funcione si queremos un valor dinamico para esta variable:
+//const team = {}
+//Antes de inicializar el objeto:
+// team[role] = person;
+//Ahora si miramos en la consola tendremos Host seteada con el nombre de la persona. 
+
+//Y digamos que tenemos un concepto mas de role
+const role2 = "Director";
+const person2 = "James Cameron";
+
+// team[role2] = person2;
+
+//ahora tenemos dos propiedades con claves dinamicas y tenemos que usar el [] como hemos visto. 
+//Si intentas utilizar el dot notation team.role = person; solo estas añadiendo la clave de role
+
+//Pero ahora con esta nueva sintaxis de computed properties podemos hacer todo de una. 
+
+const team = {
+    [role] : person,
+    [role2]: person2,
+    [1+6+9]: "sixteen"
+}
+
+//Creemos una funcion que acepte un objeto y retorne una copia de este objeto con una nueva propiedad adquirida
+// function addProp(obj, k, v){
+//     const copy = {
+//         ...obj
+//     };
+//     copy[k] = v;
+//     return copy;
+// }
+
+// const res = addProp(team, "happy", ":)")
+
+//Podemos hacer la misma funcion con un arrow function:
+
+// const addProp = (obj, k, v) => {
+//     return {
+//         ...obj,
+//         [k] : v
+//     }
+// }
+
+//A modo de bonus, intentando hacer la arrow function en una linea
+//const addProp = (obj, k, v) => { ...obj, [k]: v } //El problema con esto es que si lo dejamos asi
+//Javascrip confunde las {} del objeto con las {} que se usan para las funciones, por ende, hay que ponerle () fuera
+
+const addProp = (obj, k, v) => ({ ...obj, [k]: v })
+
+const res = addProp(team, "happy", ":)")
+/*--------------------------------------------------------------------------------------------- */
+
+//Puedo hacer cosas como esto:
+
+// const multiply = function (x,y) {
+//     return x*y;
+// }
+
+// const math = {
+//     multiply //coloco solo la palabra multiply
+// }
+
+//Si pongo en consola el objeto veremos que señala que tiene como propiedad esta funcion
+
+//Y si la quiero llamar, solo tengo que usar el dot notation:
+//math.multiply(3,2);
+
+//Es la misma funcion pero accediendo de manera diferente
+//Esto es muy poco comun a la hora de definir metodos. 
+
+const math = {
+    multiply: function (x,y) {
+        return x*y;
+    },
+    divide: function(x,y) {
+        return x / y;
+    },
+    square: function(x){
+        return x*x;
+    }
+}
+
+/*-----------------------------------------------------------------------*/
+const auth = {
+    username: "TommyBot",
+    login: () =>{ //SI hacemos un arrow functio tenemos que realizarla de esta manera
+        console.log("Hola");
+    },
+    // login(){  //Cuando con funciones normales podemos hacer esto. 
+    //     console.log("Logged you in!");
+    // },
+    logout(){
+        console.log("Goodbye!");
+    }
+}
+
+/*------------------------------------------------------------------------------- */
+
+//El objeto al que señala puede variar, hay que tener en cuenta esto
+
+function sayHi(){
+    console.log("HI");
+    console.log(this); //This es un objeto y se refiere al corriente ambiente de ejecucion (current execution scope)
+    //Refiere a window (global scope object en el browser). 
+}
+
+sayHi(); //Objeto llamado window
+
+const persona = {
+    first: "Cherilyn",
+    last: "Sarkisian",
+    nickName: "Cher",
+    // fullName (){
+    //     console.log(this); //Señala a este mismo objeto. 
+    // }
+
+    //Podemos hacer esto tambien:
+    // fullName (){
+    //     console.log(`${this.first} ${this.last} AKA ${this.nickName}`);
+    // }
+
+    //O tambien:
+    // fullName (){
+    //     const {first,last,nickName} = this;
+    //     console.log(`${first} ${last} AKA ${nickName}`);
+    // }
+
+    //Otro pequeño ejemplo:
+    fullName (){
+        const {first,last,nickName} = this;
+        return `${first} ${last} AKA ${nickName}`;
+    },
+    printBio(){
+        console.log(this);
+        //fullName(); //Asi tal cual no funciona, tengo que usar el this
+        const fullName = this.fullName(); //Uso this para referenciar al objeto. 
+        console.log(`${fullName} is a person!`)
+    }
+}
+
+//const printBio = persona.printBio; //si ejeucto printBio veré que esta señalando a window
+
+//Hay que tener en cuenta algo que es una diferencia entre arrow function y funciones normales:
+//La funcion arrow independientemente de como se llame, si con persona.arrow() o arrow() su valor no cambiará
+//Hará siempre referencia a window
+//Esta es una de las razones por las cuales nunca usamos arrow functions como metodos
+
+/*---------------------------------------------------------------------------------------------------*/
+//The Annoyomatic Demo: Cada 5 segundo imprima de manera random alguna de estas frases en la pantalla
+
+const annoyer = {
+    phrases: ["literally", "cray cray", "I can´t even", "Totes!", "YOLO", "Can´t stop, won´t stop"],
+    pickPhrase(){ //Obtengo una frase random
+        const {phrases} = this;
+        const idx = Math.floor(Math.random() *phrases.length);
+        return phrases[idx]
+    },
+    start(){
+        // console.log(this.pickPhrase())
+        // setInterval(function(){
+        //     console.log(this) //acá habra problemas porque si hacemos referencia a this, hace referencia a otra coa que no es el objeto mismo
+        //     console.log(this.pickPhrase())//Pero con arrow functions se puede solucionar. 
+        // },3000);
+
+        //Lo que alguna gente hace es que almacena el objeto this en una variable
+        // const that = this;
+        // setInterval(function(){
+        //     console.log(that); //seguiremos teniendo un error por la siguiente linea pero el that ahora si hace referencia al objeto mismo
+        //     console.log(this.pickPhrase()); 
+        // },3000);
+
+        //SI USO ARROW FUNCTIONS EVADO EL PROBLEMA COMPLETAMENTE: ARROW FUNCTION NO TIENEN SU PROPIO THIS, EL THIS EN UN ARROW FUNCTION NUNCA CAMBIO DESDE EL THIS DE SU PADRE O
+        //DE SU CERCANO THIS
+        this.timerId = setInterval(() =>{
+           console.log(this.pickPhrase()) 
+        },3000);
+    },
+    stop(){
+        clearInterval(this.timerId);
+        console.log("It´s over!");
+    }
+
+}
+
+//Esto demuestra que a veces es mejor utilizar arrow functions porque no queremos un nuevo this. 
