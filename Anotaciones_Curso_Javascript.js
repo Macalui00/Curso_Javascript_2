@@ -904,3 +904,194 @@ const annoyer = {
 }
 
 //Esto demuestra que a veces es mejor utilizar arrow functions porque no queremos un nuevo this. 
+/*---------------------------------------------------------------------------------------------------------*/
+
+//Sección DOM Manipulation:
+
+//Document.getElementById() Le paso un id como string
+const img = document.getElementById("bear-photo"); //retorna un objeto.
+console.dir(img);
+
+/*Una vez que usamos este tipo de getElement, solo si hay un match para ese id, obtenemos un elemento de regreso
+como un objeto. La representacion DOM para ese elemento.
+Recordar que se supone que tenemos solo un ID en la pagina, osea que todos los id sean diferentes.
+Osea que no deberia haber multiples bear-photo, y si las hubiera por alguna razon, seguiriamos obteniendo el primer
+elemento que matchea. Entonce solo obtenemos un elemento de vuelta y si pasamos un id invalido o algo que no está
+en la pagina, obtenemos nada, un null. */
+const p = document.getElementById("main"); //obtenemos un objeto
+console.dir(p);
+
+//Abajo de todo en __proto__: dice que tipo de elemento es.
+
+/*----------------------------------------------------------- */
+//document.getElementsByTagName(): es Elements, con s porque potencialmente podemos obtener mas de un elemento.
+//Esto significa que los elementos obtenidos seran almacenados en una lista.
+
+//Obtengamos todos los inputs:
+const inputs = document.getElementsByTagName("input"); //parece un array pero no lo es.
+
+const paragraphs = document.getElementsByTagName("p");
+
+//Si selecciono algo que no esta en la pagina:
+const h3 = document.getElementsByTagName("h3"); //Obtengo una coleccion vacia
+
+//Ahora hablemos de que es esta HTMLCollection? Es un array como objeto que no es un array. Es una coleccion de objetos
+//Es un tipo en el DOM. Pero podemos hacer algun array de cosas.
+
+//podemos usar los indices del array en brackets, con la misma sintaxis:
+console.log(inputs[0]);
+console.log(inputs.length);
+
+//Pero si intento usar array methods como .pop, .push, .include, no se puede.
+//Entonces lo que podemos hacer es acceder a los elementos con indices e iterar y no mucho mas.
+
+for(let input of inputs) {console.log(input)}
+
+//como es iterable, tambien podemos utilizar spread: no es un array pero puedo usar spread para colocarlo dentro del array
+const arr = [...inputs];
+
+//Si pongo valores en los elemento del formulario, los podremos ver por consola en el for loop.
+
+/*----------------------------------------------------------- */
+//document.getElementsByClassName()
+
+const header = document.getElementsByClassName("header");
+
+const specials = document.getElementsByClassName("special");
+
+//Y si seleccionamos un ClassName que no existe:
+const chickens = document.getElementsByClassName("chickensss");
+//Obtenemos una coleccion vacia.
+
+//Si tratamos de seleccionar basado en un id: no va a funcionar. No hay nada con el class name de main.
+const mains = document.getElementsByClassName("main");
+
+//Podemos iterar, for loop, spread.
+
+//Si quiero buscar por elementos con la clase special..
+const ul = document.getElementsByClassName("ul")[0] //esto me retorna una lista pero selecciono el primer elemento de la misma y la almaceno en una variable.
+
+//es un objeto, y tiene su popia copia de getElementsByClassName:
+//const sp = ul.getElementsByClassName("special"); //entonces solo obtengo los dos li.
+
+/*------------------------------*/
+//querySelector
+const h1 = document.querySelector("h1"); //Recordar que solo retorna el primer match
+const inp = document.querySelector("input"); //Retorna el primer match.
+
+//ID
+const photo = document.querySelector("#bear-photo");
+const centro = document.querySelector("#main");
+
+//Class
+const especial = document.querySelector(".special"); //retorna el primer match.
+
+//Supongamos que quiero seleccionar el li que dice peas:
+//No va a funcionar solo seleccionando la clase special porque obtenemos el primer special y tampoco el li.special porque esta el li first thing.
+//Tengo que ser mas especifico, como se que esta dentro de un section:
+//const especial = document.querySelector("section ul li.special"); 
+
+//Puedo ser aun más especifico con:
+const special = document.querySelector("body section ul li.special");
+
+//Otra cosa que puedo hacer es seleccionar basados en atributos:
+document.querySelector("input"); //Con esto obtengo el primer input de tipo text
+
+//Si quiero el siguiente:
+document.querySelector("input[type='password']");
+
+//querySelectorAll: usa la misma sintaxis excepto que retorna un colector.
+document.querySelectorAll("input");
+document.querySelectorAll(".special");
+document.querySelectorAll("li");
+
+//Algo para notar es que nos devuelve un nodelist a diferencia de los que nos devuelve un getElemento.
+//Es otro tipo de coleccion.
+
+/*-------------------------------------------------------------------- */
+
+//InnerText:
+
+const head1 = document.querySelector('.header');
+console.log(head1.innerText); //Me devuelve el texto que esta entre los tags.
+
+//Pero que pasa si tengo contenido anidado dentro? Voy a seleccionar el ul que esta en el section a ver que me devuelve
+
+//Primer ul que es la lista de primera cosa, segunda cosa,...
+const ulSel = document.querySelector("ul");
+console.log(ulSel.innerText);
+/*Me retorna:
+"Primera linea
+Segunda linea
+Tercera linea"
+
+Esto no esta directamente ubicado en el ul, sino que estan en los hijos.
+Por lo que obtenemos todo el texto dentro de el.
+Por lo que podemos hacer lo siguiente:*/
+
+//Shortcut document.body
+console.log(document.body.innerText);
+//Obtengo todo el texto de mi pagina web, no importa que tan anidado este el contenido.
+//leer el contenido es interesante a veces, pero tambien podemos cambiar elementos, podemos manipular el texto.
+
+head1.innerText = "Tengo hambre";
+
+//Pero hacerlo de esta manera es un poco tonto, que acutalice el texto del h1 tan prontro como la pagina cargue
+//Porque no solo actualizar el HTML pero es aca donde los eventos aparecen que hacen que pueda actualizarse algo
+//Cuando un determinado evento suceda.
+
+//Y si yo hago lo siguiente, cambio el innerText
+//ulSel.innerText = "SOY UN GRAN UL!" //todos los elemento desaparecen.
+
+//Cuando hago innerText de algo, no importa si es un il, un h1 o lo que sea, simplemente pone el texto sobre esa linea.
+//por lo que no es una gran idea hacer esto si estas tratando de preservar el contenido que tenias antes, pero puedes utilizar esto
+//cuando estas tratando de actualizar algo como un header o una captura o si sabemos que no hay ningun contenido dentro que vayamos
+//a perder.
+
+/*-------------------------------------------------------------------- */
+
+//TextContent:
+//Hay tambien otra propiedad que podemos utilizar para acceder al text content de un elemento.
+
+//Parecen ser identicos, puedo obtener el contenido de la pagina o de un elemento de la pagina.
+console.log(head1.textContent);
+
+head1.textContent = "Tengo hambre";
+
+//Pero ahora vamos a trabajar con el paragraph main:
+const parg = document.querySelector("#main");
+console.log(parg.innerText);
+//Vemos que no tiene ningun formato este texto devuelto.
+//pero si ahora lo hago con text content veremos que si se puede ver el formato en el cual esta
+//escrito el texto
+console.log(parg.textContent);
+//Sabe acerca del script text pero entonces no incluye el script tag pero sí el texto dentro del mismo.
+//Por lo que probablemente no sea ideal, la mayoria del tiempo al menos.
+
+//Entonces aquí es donde podemos ver la diferencia.
+
+//Tambien, si tuviera algo escondido en este parrafo, ejemplo un bold tag: <b></b> y luego por alguna
+//razon decidi colocarle, inline style: display none. Por lo que no veremos esa frase ahi.
+console.log(parg.innerText); //acá no aparece
+console.log(parg.textContent); //acá sí
+
+//Entonces el innerText es consciente de lo que se mostrará en la webpage, por ejemplo, el console.log,
+//Pero al textContent no le importa esto en absoluto.
+
+//el contentText es mas rapido que el inner porque no tiene que hacer estos calculos.
+
+/*-------------------------------------------------------- */
+//innerHTML:
+
+const form = document.querySelector("form");
+console.log(form.innerHTML);
+
+console.log(ulSel.innerHTML);
+
+//Puedo utilizar innerHTML para actualizar lo que hay dentro de un elemento, cambiar el contenido que esta
+//dentro de dos tags.
+
+//form.innerHTML = "Hola soy un formulario" //si voy al html veré que todo lo que estaba dentro del form 
+//se fue y ahora esta lo que le coloque ahora.
+
+//Tambien puedo agregar elementos HTML dentro:

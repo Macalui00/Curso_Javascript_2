@@ -15,6 +15,8 @@
         <h1>Anotaciones del curso de Javascript</h1>
 
         <p>El curso es el siguiente: "The Modern JavaScript Bootcamp Course (2020)" de Udemy Business</p>
+
+        
             
         <h2>NaN o Not a Number</h2>
         <p> Hay una cosa importante que hay que saber de los numeros en JavaScript, que es el NaN, que es un valor especial en Javascript.
@@ -913,16 +915,114 @@
         <p> DOM o Document Object Model es nuestra ventana dentro de HTML y CSS y de la pagina web en general, a traves de Javascript.
             Podemos cambiar cosas en la página web. 
             
-            El objeto doucmento es nuestro punto de entrada al mundo del DOM. Contiene representaciones de todo el contenido en una pagina, más tonelada de metodos muy utiles y propiedades.
+            El objeto documento es nuestro punto de entrada al mundo del DOM. Contiene representaciones de todo el contenido en una pagina, más tonelada de metodos muy utiles y propiedades.
             
+            Hay una jerarquia de los objetos de una pagina web.
         
+            El objeto documento representa la pagina web completa, el documento entero. Todas las otras piezas, objetos del DOM, estan localizadas en algun lugar del documento.
         </p>
 
-        <h2></h2>
-        <p></p>
+        <h2>Selecting</h2>
+        <p> Nosotros lo que hacemos es seleccionar un elemento o multiples elementos y despues hacemos algo con ellos, osea:
+                1. Seleccionamos
+                2. Manipulamos
+            Hay muchas maneras de seleccionar usando el documento, algunas:
+                - getElementById: Es un metodo del document, asi que lo llamamos de la siguiente manera: document.getElementById. Lo que hace es justamente tomar un ID y buca el elemento que
+                matchea, que contiene o que tiene ese ID en él y retorna ese objeto.
+                Document.getElementById() Le paso un id como string
+                const img = document.getElementById("bear-photo"); //retorna un objeto.
 
-        <h2></h2>
-        <p></p>
+                Una vez que usamos este tipo de getElement, solo si hay un match para ese id, obtenemos un elemento de regreso
+                como un objeto. La representacion DOM para ese elemento.
+                Recordar que se supone que tenemos solo un ID en la pagina, osea que todos los id sean diferentes.
+                Osea que no deberia haber multiples bear-photo, y si las hubiera por alguna razon, seguiriamos obteniendo el primer
+                elemento que matchea. Entonce solo obtenemos un elemento de vuelta y si pasamos un id invalido o algo que no está
+                en la pagina, obtenemos nada, un null.
+
+                Abajo de todo en __proto__: dice que tipo de elemento es.
+                En conclusion, lo que tenemos que saber es que hay diferentes categorias de elemenos en la pagna y algunos de ellos tienen su propio tipo como HTML paragraph.
+                Hay diferentes patrones para estos objetos diferentes.
+
+                - getElementsByTagName: otro tipo de metodo de documento que es un poco diferente al anterior. Seleccionamos por un tipo de elemento: Imagenes, Parrafos, etc.
+                document.getElementsByTagName(): es Elements, con s porque potencialmente podemos obtener mas de un elemento.
+                Esto significa que los elementos obtenidos seran almacenados en una lista.
+
+                Si selecciono algo que no esta en la pagina:
+                const h3 = document.getElementsByTagName("h3"); //Obtengo una coleccion vacia
+
+                Ahora hablemos de que es esta HTMLCollection? Es un array como objeto que no es un array. Es una coleccion de objetos
+                Es un tipo en el DOM. Pero podemos hacer algun array de cosas.
+
+                podemos usar los indices del array en brackets, con la misma sintaxis:
+                inputs[0]
+                inputs.length
+
+                Pero si intento usar array methods como .pop, .push, .include, no se puede.
+                Entonces lo que podemos hacer es acceder a los elementos con indices e iterar y no mucho mas.
+                
+                for(let input of inputs) {console.log(input)}
+
+                como es iterable, tambien podemos utilizar spread: no es un array pero puedo usar spread para colocarlo dentro del array
+                const arr = [...inputs];
+                - getElementsByClassName: Aca tambien es con s, porque podemos obtener multiples elementos en una lista.
+                
+            Algo mas acerca de todos estos metodos vistos es que no tienes que llamarlos solo en el documento. Cuando tenes un documento con miles de elementos.
+            Si tengo que seleccionar un elemento y despues una busqueda mas dentro de ese elemento, puedo hacer esto...
+
+            Los siguientes elementos los utilizaré para la sección DOM Manipulation:
+        </p>
+
+        <h1 class="header">Este es un header de prueba</h1>
+        <form action="">
+            <input type="text" placeholder="Bear Name">
+            <input type="password" placeholder="password">
+            <input type="submit">
+        </form>
+        <p class="special"> cjajqsuqcwuiehdswdfjksdncqi</p>
+        <ul>
+            <li class="special">primera linea</li>
+            <li>segunda linea</li>
+            <li class="special">tercera linea</li>
+        </ul>
+        <p id = "main">Este es un parrafo para DOM Manipulation.
+            Como se ve?
+        
+            <b style="display: none;">1,2,3,4 probando</b>
+            saafasfgw
+            <script>console.log("HELLO EVERYONE!")</script>
+        </p>
+        <img id="bear-photo" src="https://verdeyazul.diarioinformacion.com/wp-content/uploads/2020/07/portada-article-img-20-768x512.jpg" alt = "">
+        <section>
+            <ul>
+                <li>Carrots</li>
+                <li class="special">Peas</li>
+                <li>Broccoli</li>
+            </ul>   
+        </section>
+       
+
+        <h2>QuerySelector</h2>
+        <p> Hay un 4to metodo de seleccion que los gobierna a todos y que es el quertSelector. Es el más nuevo, es un metodo selector de un solo elemento, todo en uno.
+            Puede seleccionar cualquier cosas que usemos, puede replicar la funcionalidad de todos los selectores mencionados anteriormente o en base a cualquier otro
+            criterio. La manera en la que funcion es que pasamos a un selector de estilos css, por lo que, podemos selecionar un ID usando CSS cuando pasamos el simbolo
+            de # y el nombre del id o el . y el nombre de la clase. Podemos seleccionar un elemento escribiendo solo el nombre del elemento exactamente como lo hacemos 
+            en CSS. Podemos seleccionar por atributo.
+            Hay dos versiones del querySelector:
+                -querySelector: este solo retorna un solo elemento como mucho. Recordar que solo retorna el primer match.
+                -querySelectorAll: que hace lo mismo pero retorna una coleccion.
+            Algo para notar es que nos devuelve un nodelist a diferencia de los que nos devuelve un getElemento.
+            Es otro tipo de coleccion. Una diferencia con un html colection es que con el nodelist podemos utilizar el foreach.
+        </p>
+
+        <h2>Trabajando con innerText y textContent</h2> 
+        <p>Accediendo a text desde un elemento. Como obtenemos los contenidos de un elemento.</p>   
+        
+        <h2>InnerHTML</h2> 
+        <p> Va a retornar o retribuir no solo el texto dentro de un elemento sino tambien todos los tags que se encuentren dentro.
+        </p>   
+
+        <h2></h2> 
+        <p></p>   
         <script src="Anotaciones_Curso_Javascript.js"></script> 
     
     </body>
