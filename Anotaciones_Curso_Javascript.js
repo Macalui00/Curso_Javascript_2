@@ -928,7 +928,7 @@ console.dir(p);
 //Esto significa que los elementos obtenidos seran almacenados en una lista.
 
 //Obtengamos todos los inputs:
-const inputs = document.getElementsByTagName("input"); //parece un array pero no lo es.
+//const inputs = document.getElementsByTagName("input"); //parece un array pero no lo es.
 
 const paragraphs = document.getElementsByTagName("p");
 
@@ -939,16 +939,16 @@ const h3 = document.getElementsByTagName("h3"); //Obtengo una coleccion vacia
 //Es un tipo en el DOM. Pero podemos hacer algun array de cosas.
 
 //podemos usar los indices del array en brackets, con la misma sintaxis:
-console.log(inputs[0]);
-console.log(inputs.length);
+// console.log(inputs[0]);
+// console.log(inputs.length);
 
 //Pero si intento usar array methods como .pop, .push, .include, no se puede.
 //Entonces lo que podemos hacer es acceder a los elementos con indices e iterar y no mucho mas.
 
-for(let input of inputs) {console.log(input)}
+// for(let input of inputs) {console.log(input)}
 
 //como es iterable, tambien podemos utilizar spread: no es un array pero puedo usar spread para colocarlo dentro del array
-const arr = [...inputs];
+// const arr = [...inputs];
 
 //Si pongo valores en los elemento del formulario, los podremos ver por consola en el for loop.
 
@@ -1095,3 +1095,156 @@ console.log(ulSel.innerHTML);
 //se fue y ahora esta lo que le coloque ahora.
 
 //Tambien puedo agregar elementos HTML dentro:
+//form.innerHTML = "<b> Soy un Bold Tag</b>" //Dentro le coloco lo que quiero agregar
+//Esto esta bien para elementos hmtl simples pero si estamos tratando de hacer alo mas complejo
+//seria un poco raro estrar escribiendo un enorme string con todo el contenido, y veremos otra manera de añadir
+//elementos despues en la misma seccion.
+
+head1.innerHTML += " is cool"
+console.log(head1);
+
+//Hay una diferencia entre innerHTML y innerText
+
+//innerText no te da los tags a dif del innerHTML
+//cuando los seteas pareciera que puedes usarlos si quieres agregar un elmento en algun html tag...en el caso de innerHTML
+//En el caso de innertext no es que ignore los tags pero los trata como si fueran texto.
+//Con innerHTML podes agregar elementos nuevos, con innerText no.
+
+const inputs = document.querySelectorAll("input");
+//Bear-name
+console.log(inputs[0].value);
+//Password
+console.log(inputs[1].value);
+//checkbox
+console.log(inputs[2].checked);
+//Barra
+console.log(inputs[3].value);
+
+//metodo placeholder:
+console.log(inputs[1].value);
+//puedo cambiar el placeholder:
+inputs[1].placeholder = "Please enter password!"
+
+const a = document.querySelector("a");
+
+console.log(a.href);
+//le cambio el valor:
+a.href = "http://www.google.com"
+
+//cambiando la imagen
+img.src= "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGje_zlG3XBIejihXyNAo07GDRd2Lb49f7Uw&usqp=CAU"
+
+/*------------------------------------------------*/
+const range = document.querySelector("input[type='range']");
+
+//Supongamos que queramos ver el valor del atributo max, del range:
+console.log(range.getAttribute("max"));
+
+//El valor del atributo min del range:
+console.log(range.getAttribute("min"));
+
+//caso que quiero obtener el valor de un atributo inexistente, me retorna null:
+console.log(range.getAttribute("lolol"))
+
+//para setear el valor de un atributo:
+// range.setAttribute("min", "-500")
+// console.log(range.getAttribute("min"));
+// console.log(range.value);
+
+//podemos cambiar un monton de cosas de los atributos, ejemplo el tipo:
+// range.setAttribute("type", "radio");
+// si miramos el range en la pagina ha cambiado a otro tipo de formulario
+
+/*------------------------------------------------------------------*/
+//ParentElement:
+const firstLI = document.querySelector("li");
+console.log(firstLI);
+
+//Obtengo el padre: ul
+console.log(firstLI.parentElement); 
+
+//Vuelvo a hacer el parentElement y que obtengo? el body:
+console.log(firstLI.parentElement.parentElement);
+
+//Y si lo vuelvo a hacer de nuevo? Obtengo HTML
+console.log(firstLI.parentElement.parentElement.parentElement);
+
+//Y si lo intentamos una vez más obtenemos null:
+console.log(firstLI.parentElement.parentElement.parentElement);
+
+
+//children:
+//Seleccionemos el ul:
+const firstUl = document.querySelector("ul");
+
+//acceder a los hijos del Ul:
+console.log(firstUl.children); //Este es otro array like object
+//array similar a un objeto, y contiene todos los elementos hijos de este ul.
+
+//Los li no tienen hijos pero podemos acceder a uno de ellos.
+console.log(firstUl.children[0])
+console.log(firstUl.children[0].innerText)
+
+//nextElementSibling and previousElementSibling: Sibling al mismo nivel, comparten un padre.
+
+//nextElementSibling
+console.log(firstLI.nextElementSibling);
+console.log(firstLI.nextElementSibling.nextElementSibling);
+
+//previousElementSibling
+const thirdLi = firstLI.nextElementSibling.nextElementSibling;
+console.log(thirdLi.previousElementSibling);
+
+/*-----------------------------------------------------------------------------------------------------*/
+//Cambiando multiples elementos.
+
+//En este caso vamos a cambiar el innerText de todos los li de la página
+const allLis = document.querySelectorAll("li");
+
+for (let i=0; i < allLis.length; i++){
+    console.log(allLis[i].innerText)
+}
+
+for (let i=0; i < allLis.length; i++){
+    allLis[i].innerText = "We are the champions!"
+}
+
+for (let li of allLis){
+    li.innerHTML = "We are <b>THE CHAMPIONS</b>"
+}
+
+/*----------------------------------------------------------------------*/
+//Cambiando el estilo:
+
+console.log(head1.style);
+console.log(head1.style.color);
+
+//Podemos utilizar Javascript para cambiar el estilo de un elemento en la pagina
+//y seran afectados en la pagina, pero si utilizamos estas propiedades para leer 
+//propiedades existentes, no funcinará al menos uq eesten definidos inline, lo cual,
+//no es buena idea. Normalmente, no agregamos estilos inline.
+
+head1.style.color = "orange";
+p.style.color = "pink";
+p.style.backgroundColor = "grey";
+p.style.fontSize = "40px";
+console.log(p.style);
+
+//Si tienes un monton de estilos que quieres agregar, 10 diferentes estilos, de esta manera:
+//p.style.propiedad = valor; pierdo un monton haciendolo uno por uno.
+
+//Cuando creamos una pagina web comunmente tenemos grupos de estlo que queremos aplicar a diferentes elementos y que mantenemos cierto tema,
+//usualmente usamos una clase y esto es como obtenemos otra alternativa de darle estilo.
+const colores = ["red", "orange", "blue", "yellow","green", "purple"];
+
+allLis.forEach((li, i)=>{
+    const color = colores[i];
+    li.style.color = color;
+})
+
+//Es importante tener en cuenta porque esto funciona sobre otros estilos.
+//La diferencia entre inline y los class styles es que va a predominar uno sobre otro, es decir, ejemplo:
+//ponele que yo tengo un parrafo que tiene asinada una clase special que dice que tiene un color rojo,
+//y luego utilizo el .style.color = "blue", va a predominar el .style.color = blue por ser inline style
+//por sobre el class style.
+

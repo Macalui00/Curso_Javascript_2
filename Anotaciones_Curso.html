@@ -973,17 +973,23 @@
         </p>
 
         <h1 class="header">Este es un header de prueba</h1>
+        
         <form action="">
             <input type="text" placeholder="Bear Name">
             <input type="password" placeholder="password">
+            <input type="checkbox">
+            <input type="range" min="100" max="500"/>
             <input type="submit">
         </form>
+        
         <p class="special"> cjajqsuqcwuiehdswdfjksdncqi</p>
+        
         <ul>
             <li class="special">primera linea</li>
             <li>segunda linea</li>
             <li class="special">tercera linea</li>
         </ul>
+        
         <p id = "main">Este es un parrafo para DOM Manipulation.
             Como se ve?
         
@@ -991,7 +997,11 @@
             saafasfgw
             <script>console.log("HELLO EVERYONE!")</script>
         </p>
+        
+        <a href="www.cats.com/cute">Cats are adorable sometimes...</a>
+
         <img id="bear-photo" src="https://verdeyazul.diarioinformacion.com/wp-content/uploads/2020/07/portada-article-img-20-768x512.jpg" alt = "">
+        
         <section>
             <ul>
                 <li>Carrots</li>
@@ -999,7 +1009,6 @@
                 <li>Broccoli</li>
             </ul>   
         </section>
-       
 
         <h2>QuerySelector</h2>
         <p> Hay un 4to metodo de seleccion que los gobierna a todos y que es el quertSelector. Es el más nuevo, es un metodo selector de un solo elemento, todo en uno.
@@ -1021,8 +1030,34 @@
         <p> Va a retornar o retribuir no solo el texto dentro de un elemento sino tambien todos los tags que se encuentren dentro.
         </p>   
 
+        <h2>Value, src, href y más</h2> 
+        <p>Propiedades que directamente podemos acceder como elementos individuales.</p> 
+
+        <h2>getAttribute y setAttribute</h2> 
+        <p></p>  
+
+        <h2>Encontrando padres/hijos/hermanos</h2> 
+        <p> Hay manera de encontrarlos que serian los siguientes metodos:
+                - parentElement
+                - children
+                - nextSibling: siguiente hermano
+                - previousSibling: hermano previo
+            Estos metodos te permiten acceder a otros elementos basados en el elemento actual con el que estemos trabajando.
+
+        </p>
+
+        <h2>Cambiando multiples elementos</h2> 
+        <p>Usando el querySelectorAll e iterando el array que nos devuelve podemos cambiar multiples elementos.</p>
+        
+        <h2>Cambiando estilos usando JavaScript</h2> 
+        <p> Hay muchas maneras, en este caso veremos una que es la propiedad style. Entonces, cada elemento que nosotros seleccionamos,
+            tiene su propiedad estilo. </p>
+
         <h2></h2> 
-        <p></p>   
+        <p></p>
+
+        <h2></h2> 
+        <p></p>
         <script src="Anotaciones_Curso_Javascript.js"></script> 
     
     </body>
