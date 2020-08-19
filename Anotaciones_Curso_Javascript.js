@@ -1034,7 +1034,7 @@ console.log(document.body.innerText);
 //Obtengo todo el texto de mi pagina web, no importa que tan anidado este el contenido.
 //leer el contenido es interesante a veces, pero tambien podemos cambiar elementos, podemos manipular el texto.
 
-head1.innerText = "Tengo hambre";
+//head1.innerText = "Tengo hambre";
 
 //Pero hacerlo de esta manera es un poco tonto, que acutalice el texto del h1 tan prontro como la pagina cargue
 //Porque no solo actualizar el HTML pero es aca donde los eventos aparecen que hacen que pueda actualizarse algo
@@ -1056,7 +1056,7 @@ head1.innerText = "Tengo hambre";
 //Parecen ser identicos, puedo obtener el contenido de la pagina o de un elemento de la pagina.
 console.log(head1.textContent);
 
-head1.textContent = "Tengo hambre";
+//head1.textContent = "Tengo hambre";
 
 //Pero ahora vamos a trabajar con el paragraph main:
 const parg = document.querySelector("#main");
@@ -1100,8 +1100,8 @@ console.log(ulSel.innerHTML);
 //seria un poco raro estrar escribiendo un enorme string con todo el contenido, y veremos otra manera de añadir
 //elementos despues en la misma seccion.
 
-head1.innerHTML += " is cool"
-console.log(head1);
+//head1.innerHTML += " is cool"
+//console.log(head1);
 
 //Hay una diferencia entre innerHTML y innerText
 
@@ -1224,11 +1224,11 @@ console.log(head1.style.color);
 //propiedades existentes, no funcinará al menos uq eesten definidos inline, lo cual,
 //no es buena idea. Normalmente, no agregamos estilos inline.
 
-head1.style.color = "orange";
-p.style.color = "pink";
-p.style.backgroundColor = "grey";
-p.style.fontSize = "40px";
-console.log(p.style);
+//head1.style.color = "orange";
+//p.style.color = "pink";
+//p.style.backgroundColor = "grey";
+//p.style.fontSize = "40px";
+//console.log(p.style);
 
 //Si tienes un monton de estilos que quieres agregar, 10 diferentes estilos, de esta manera:
 //p.style.propiedad = valor; pierdo un monton haciendolo uno por uno.
@@ -1248,3 +1248,171 @@ allLis.forEach((li, i)=>{
 //y luego utilizo el .style.color = "blue", va a predominar el .style.color = blue por ser inline style
 //por sobre el class style.
 
+/*-------------------------------------------------------------------------------------------------------------*/
+//getComputedStyle:
+
+console.log(document.querySelector("li").style.color) //Esto retorna "" porque esta propiedad style solo contiene los estilos inline, no contiene ningun
+//style calculado, ningun estilo de la hola de estilos, ninguno de las clases de estilos que es lo que sucede en la pagina.
+
+const style = getComputedStyle(firstLI);
+console.log(style);
+
+//Ponele que cambiamos el color
+console.log(style.color);
+firstLI.style.color = "pink";
+console.log(style.color);
+
+//entonces este computedStyle me permitirá tener los valores actuales de los estilos de los elementos.
+//computed significa que los stilos a veces vienen de un style sheet pero tambien tienen cosas como hover style.
+
+//Veamos el font-size y el color cuando pasamos el mouse por el header. Es un poco trampoco por que en proposito de correr este codigo desde mi consola tengo que tipear
+//mientras muevo mi mouse por el header:
+
+const compStyles = getComputedStyle(head1);
+
+console.log(compStyles.color);
+console.log(compStyles.fontSize);
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+const todo = document.querySelector("#todos .todo");
+
+//tres propiedades en 3 lineas separadas:
+// todo.style.color = "gray";
+// todo.style.textDecoration = "line-through";
+// todo.style.opacity = "50%";
+
+//Imaginemos que queremos aplicar 20 propiedades diferentes...
+//la solucion seria definir una clase.
+
+//una vez creada la clase, la tengo que aplicar a los elementos deseados.
+console.log(todo.getAttribute("class")); //como la clase es un atributo
+
+//Puedo setear ese atributo:
+todo.setAttribute("class", "done");
+//pero si vemos ahora la pagina veremos que el primer li ha perdido la clase todo por ende tiene tamaño diferente
+
+//pero lo que puedo hacer para solucionar esto es hacer:
+todo.setAttribute("class", "todo done"); //para mantener los dos tipos de clases
+//esto funciona pero me requiere un codigo duro en lo que estoy tratando lograr.
+
+//esto no es lo mejor, porque tengo que estar poniendo todas las clases separadas por espacios, por lo que esto
+//nos trae a una nueva propiedad... classList:
+todo.classList
+//Es una representacion de objeto que es llamada DOMTokenList: luce como un array pero no lo es y contiene las clases
+//que nosotros tenemos en este elemento y no solo se trata de contener las clases y poder verlas sino tambien provee
+//metodos.
+
+//Ejemplo, queremos remover la clase done del objeto todo:
+todo.classList.remove("done");
+//si vuelvo a intentar remover la clase done:
+todo.classList.remove("done"); //no nos genera problemas
+
+//por lo que esta, es una buena manera de implementarlo.
+
+//Puedo hacer lo opuesto:
+todo.classList.add("done");
+
+//Pero quizas la mejor parte es la habilidad de alternar una clase:
+//si ya esta ahi removerla y si no esta ahí, agregarla:
+todo.classList.toggle("done");
+
+//verificar si la clase done esta en el elemento li:
+console.log(todo.getAttribute("class").includes("done")); //Como me retorna falso... 
+
+todo.setAttribute("class", todo.getAttribute("class") + " done");
+//Esto es un poco loco de hacer. 
+console.log(todo.getAttribute("class").includes("done"));
+
+//Hay que notar que por esta razon de que tenes que verificar y luego modificar, es mas facil
+//utilizar el toggle que ademas si lo colocas por consola te retorna true or false.
+
+/*------------------------------------------------------------------------------------*/
+
+//Creando elementos:
+//Primer paso es crear el elemento para lo cual tenemos un elemento llamado createELement
+console.log(document.createElement("h2")); //le paso un string sobre el tipo de elemento que quiero crear
+
+//Pero esto no es enrealidad un h2 sino solamente un representacion de HTML
+
+const newh2 = document.createElement("h2");
+//Esta vacio, por lo que debemos introducirle contenido
+
+newh2.innerText = "Me gustan los animales!";
+console.log(newh2.innerText);
+
+//ahora le puedo agregar una clase si quiero
+newh2.classList.add("special");
+console.log(newh2);
+
+//Como hago ahora para insertar este elemento dentro de la pagina.
+//Lo que necesiatmos hacer es seleccionar un elemento para agregarlo a el tambien. 
+//AppendChild() seria uno, es un metodo que podemos llama a un padre al que le queremos agregar un elemento.
+
+//Que tal si ponemos este newh2 dentro del tag section, seleccionamos al section y despues llamamos appendChild
+//en la seccion y le pasamos nuestro nuevo h2
+
+const section = document.querySelector("section");
+section.appendChild(newh2); //Cuando colocamos con append un elemento, este se coloca abajo en la lista de hijos, osea que
+//ira despues de la lista de verduras.
+
+//Ahora probemos con una imagen:
+const newImg = document.createElement("img"); //es un objeto, un HTML image
+newImg.src = "https://www.pisosestudiantesbarcelona.com//pics_fotosnoticias/99/mono.jpg";
+//Ahora vamos a adjuntar el elemento el algun lado. 
+//Si no queremos adjuntarlo debajo de la seccion, puedo hacer appendChild al body o ponerlo dentro del form. 
+newImg.style.width = "300px";
+
+document.body.appendChild(newImg);
+
+//Ahora probemos insertando el link de un video de youtube:
+//Utilizare el link a un video de luisito comunica:
+
+
+const newLink = document.createElement("a");
+newLink.innerText = "Ver video de Luisito Comunica, click aqui!"
+newLink.href = "https://www.youtube.com/watch?v=MJg0B8wKGKs"
+p.appendChild(newLink);
+
+/*---------------------------------------------------------------------------------------*/
+//Append, Prepend e InsertBefore:
+
+//con appendChild necesito el padre al cual le quiero agregar el elemento hijo:
+//Ejemplo agregar un elemento li a la lista:
+const parentUL = document.querySelector("ul");
+console.log(parentUL);
+const newLI = document.createElement("li");
+newLI.innerText = "Soy un nuevo li"
+
+//Cuando hago appendChild, se convierte en el ultimo elemento hijo del padre
+parentUL.appendChild(newLI);
+
+//Pero que pasa si lo quiero poner al principio, o que pasa si lo quiero poner
+//en el medio. Hay un metodo diferente llamado insertBefore:
+//Seleccionamos un nodo y llamamos a insertBefore. Supongamos que queremos insertar
+//despues del primer il. Tenemos que seguir llamando al padre y seleccionando el elemento despues
+//del cual queremos insertar el elemento.
+parentUL.insertBefore(newLI,firstLI);
+
+parentUL.insertBefore(newLI, thirdLi);
+
+//Existe otro metodo: insertAdjacentElement() el cual es un poco más complicado, pasamos un
+//elemento, tenemos un targetElement, pero tambien pasamos una posicion y es un string que
+//que pueden ser 4 opciones: beforebegin, afterbegin, beforeend, afterend. 
+
+//targetElement.insertAdjacentElement(position, element);
+//Position:
+//beforebegin: antes del targetElement en si mismo.
+//afterbegin: justo debajo del targetElement, antes esta el primer hijo. 
+//beforeend: justo debajo del tarjetElement, despues esta su ultimo hijo.
+//afterend: despues del targetElement en si mismo.
+
+//creemos un elemento bold tag:
+
+const i = document.createElement("i");
+i.innerText = "Somos italicass!!"
+
+//Antes que el parrafo empiece:
+//p.insertAdjacentElement("beforebegin", i);
+
+//Despued de que el parrafo termine:
+p.insertAdjacentElement("afterend", i);

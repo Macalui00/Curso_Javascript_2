@@ -6,9 +6,11 @@
     
         <title>Anotaciones del Curso Javascript</title>
 
-        <!-- Google Fonts -->
+        <!-- Google Fonts:-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
+        <!--Estilos:-->
+        <link rel="stylesheet" href="app.css">
     </head>
 
     <body>
@@ -998,6 +1000,12 @@
             <script>console.log("HELLO EVERYONE!")</script>
         </p>
         
+        <ul id="todos">
+            <li class ="todo">Comprar verduras <button>X</button></li>
+            <li class ="todo">Estudiar para la clase <button>X</button></li>
+            <li class ="todo">Entregar pedido <button>X</button></li>
+        </ul>
+
         <a href="www.cats.com/cute">Cats are adorable sometimes...</a>
 
         <img id="bear-photo" src="https://verdeyazul.diarioinformacion.com/wp-content/uploads/2020/07/portada-article-img-20-768x512.jpg" alt = "">
@@ -1053,11 +1061,25 @@
         <p> Hay muchas maneras, en este caso veremos una que es la propiedad style. Entonces, cada elemento que nosotros seleccionamos,
             tiene su propiedad estilo. </p>
 
-        <h2></h2> 
-        <p></p>
+        <h2>getComputedStyle</h2> 
+        <p>Otra manera de acceder a los valores de estilos. Entonces, no setear un valor pero si obtener cual es el valor actual para,
+            por ejemplo, el color, el fondo de pantalla, etc. Realmente no lo podemos hacer usando la propiedad style como vimos. 
+        </p>
+
+        <h2>Manipulando Classes</h2> 
+        <p>Ahora veremos una mejor manera de añadir multiples estilos de una vez.</p>
+
+        <h2>Creando elementos</h2> 
+        <p>Como crear elementos desde scratch e insertarlos o agregarlo al DOM.</p>
+
+        <h2>Append, Prepend e insertBefore</h2> 
+        <p>Otros metodos que podemos utilizar para agregar nuevos elementos al DOM. Y tambien vamos a hablar de remover elementos,
+            como hacemos para detear algo desde el DOM.
+        </p>
 
         <h2></h2> 
         <p></p>
+
         <script src="Anotaciones_Curso_Javascript.js"></script> 
     
     </body>
