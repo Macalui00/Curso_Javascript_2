@@ -969,7 +969,7 @@ const mains = document.getElementsByClassName("main");
 //Podemos iterar, for loop, spread.
 
 //Si quiero buscar por elementos con la clase special..
-const ul = document.getElementsByClassName("ul")[0] //esto me retorna una lista pero selecciono el primer elemento de la misma y la almaceno en una variable.
+//const ul = document.getElementsByClassName("ul")[0] //esto me retorna una lista pero selecciono el primer elemento de la misma y la almaceno en una variable.
 
 //es un objeto, y tiene su popia copia de getElementsByClassName:
 //const sp = ul.getElementsByClassName("special"); //entonces solo obtengo los dos li.
@@ -1018,8 +1018,8 @@ console.log(head1.innerText); //Me devuelve el texto que esta entre los tags.
 //Pero que pasa si tengo contenido anidado dentro? Voy a seleccionar el ul que esta en el section a ver que me devuelve
 
 //Primer ul que es la lista de primera cosa, segunda cosa,...
-const ulSel = document.querySelector("ul");
-console.log(ulSel.innerText);
+//const ulSel = document.querySelector("ul");
+//console.log(ulSel.innerText);
 /*Me retorna:
 "Primera linea
 Segunda linea
@@ -1086,7 +1086,7 @@ console.log(parg.textContent); //acá sí
 const form = document.querySelector("form");
 console.log(form.innerHTML);
 
-console.log(ulSel.innerHTML);
+//console.log(ulSel.innerHTML);
 
 //Puedo utilizar innerHTML para actualizar lo que hay dentro de un elemento, cambiar el contenido que esta
 //dentro de dos tags.
@@ -1384,16 +1384,16 @@ const newLI = document.createElement("li");
 newLI.innerText = "Soy un nuevo li"
 
 //Cuando hago appendChild, se convierte en el ultimo elemento hijo del padre
-parentUL.appendChild(newLI);
+//parentUL.appendChild(newLI);
 
 //Pero que pasa si lo quiero poner al principio, o que pasa si lo quiero poner
 //en el medio. Hay un metodo diferente llamado insertBefore:
 //Seleccionamos un nodo y llamamos a insertBefore. Supongamos que queremos insertar
 //despues del primer il. Tenemos que seguir llamando al padre y seleccionando el elemento despues
 //del cual queremos insertar el elemento.
-parentUL.insertBefore(newLI,firstLI);
+// parentUL.insertBefore(newLI,firstLI);
 
-parentUL.insertBefore(newLI, thirdLi);
+// parentUL.insertBefore(newLI, thirdLi);
 
 //Existe otro metodo: insertAdjacentElement() el cual es un poco más complicado, pasamos un
 //elemento, tenemos un targetElement, pero tambien pasamos una posicion y es un string que
@@ -1414,5 +1414,105 @@ i.innerText = "Somos italicass!!"
 //Antes que el parrafo empiece:
 //p.insertAdjacentElement("beforebegin", i);
 
-//Despued de que el parrafo termine:
-p.insertAdjacentElement("afterend", i);
+//Despues de que el parrafo termine:
+//p.insertAdjacentElement("afterend", i);
+
+//Va dentro del elemento parrafo en si mismo, despues del tag de apertura:
+//p.insertAdjacentElement("afterbegin", i);
+
+//Nos coloca el elemento dentro del elemento parrafo, ante del tag de cierre
+//p.insertAdjacentElement("beforeend", i);
+
+//Hay otros dos metodos append() y prepend(): son nuevos y no funcionan en internet explorer
+//Append: Me permite, a dif. del appendChild, insertar multiples elementos a la vez:
+
+//p.append(i,newLI); //Y son agregados dentro del parrafo
+
+//Prepend: es la misma idea excepto que hara las cosas que se vayan a insertar sean primeros hijos del elemento padre:
+p.prepend(i,newLI);
+
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+
+//RemoveChild():
+
+const ul = document.querySelector("section ul");
+
+//Quiero remover el li dentro del ul que tiene la clase special:
+const spIL = ul.querySelector(".special");
+const elemRemovido = ul.removeChild(spIL); //Nos retorna el elemento eliminado!
+
+//Remove(): No necesita el nodo padre. Solo tenemos que seleccionar el elemento que queremos borrar y llamar a remove en el mismo elemento
+// const h1Bor = document.querySelector("h1");
+// h1Bor.remove();
+
+/*------------------------------------------------------------------------------------------------------------------------------*/
+//DOM EVENTS:
+
+const clicker = document.querySelector("#clicker");
+
+clicker.onclick = function () {
+    alert("Hi!!");
+    console.log("Me has cliqueadooo!");
+    
+}
+
+//Puedo agregar un segundo event listener para el mismo elemento:
+
+clicker.ondblclick = function () {
+    alert("Doble click!!");
+    console.log("Doble click!");
+    
+}
+//aun así esta manera de manipular los eventos tampoco es la mejor... 
+
+/*--------------------------------------------------------------------------- */
+//AddEventListener():
+
+const boton = document.querySelector("#btn");
+
+// boton.onclick = function(){
+//     console.log("me has cliqueados");
+// }
+//Ahora si quiero tener un segundo quick event listener no tengo opcion para poder elegir el mismo evento. 
+//onclick es una propiedad unica
+
+// boton.onclick = function(){
+//     console.log("Segunda vez!!");
+// }
+//Nos aparecera solamente esta ultima cuando cliquiemos el boton, porque hemos sobreescrito esa propiedad. 
+
+//Hay ocaciones donde puede ser necesario dos o mas events listeners, ejemplos apagar o prender boton.
+
+//La tercera opcion es justamente el addEventListener
+boton.addEventListener("click", ()=>{
+    alert("Me has cliqueado!");
+});
+
+//Puedo agregar un segundo event listener si quisiera:
+
+boton.addEventListener("click", ()=>{
+    console.log("Segunda cosa");
+});
+
+//Lo que hacemos acá es que no estamos seteando la propiedad onclik. 
+//Estamos adjuntando un event listener donde podemos tener multiples de estos.
+
+//Probemos con diferentes tipos de eventos:
+boton.addEventListener("mouseover", function (){
+    boton.innerText = "Deja de tocarme!!";
+});
+
+//Ahora cuando acerco el mouse cambia, pero cuando me voy se queda el mensaje, esto es porque solo coloque
+//un mouseover. Existe otro evento que podemos adjuntar:
+
+boton.addEventListener("mouseout", function (){
+    boton.innerText = "Cliqueame";
+});
+
+//Probemos con scroll events
+window.addEventListener("scroll", function(){
+    console.log("Para de scrollear!")
+});
+//Es probable que no queramos ejecutar esta funcion cada vez que ocurra, cada vez que cambie el scroll position por cada pixel.
+
+/*-----------------------------------------------------------------------------------------------------------------------*/

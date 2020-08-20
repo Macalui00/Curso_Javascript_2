@@ -177,3 +177,36 @@ function vaciarPilaDesc(pilaDescarte){
     pilaDescarte = [];
     return pilaDescarte;
 }
+
+/*--------------------------------------------------------------*/
+const btn = document.querySelector("button");
+
+// btn.addEventListener("mouseover", function(){
+//     console.log("El mouse ha pasado por arriba mio");
+//     //El tema con definir los valores asi de manera azaroza es que esto puede variar dependiendo de la cantidad de pixeles del usuario
+//     btn.style.left="200px";
+//     btn.style.top="100px";
+//     //Hay miles de maneras de acceder al tamaño de la pantalla que pueden variar dependiendo del tipo y version del browser. 
+// });
+
+//Si yo hago lo siguiente:
+//console.log(window.screen);
+//veremos que en screen hay dos atributos: avaiHeight y avaiWidth, que son las dimensiones maximas de mi pantalla actual. 
+//Pero no son las dimensones de mi browser window y el problema es que puede que tenga la ventana completa, pero tambien puede tener la ventana
+//mas chica y quiero que funcione igual, por lo que existe otra manera:
+console.log(window.innerHeight);
+console.log(window.innerWidth);
+//Entonces utilizaremos estos para calcular a donde moveremos el boton.
+
+btn.addEventListener("mouseover", function(){
+    console.log("El mouse ha pasado por arriba mio");
+    const height = Math.floor(Math.random()*window.innerHeight);
+    const width = Math.floor(Math.random()*window.innerWidth);
+    btn.style.left=`${width}px`;
+    btn.style.top=`${height}px`;
+});
+
+btn.addEventListener("click", function(){
+    btn.innerText = "Me has atrapado!";
+    document.body.style.backgroundColor = "green";
+})

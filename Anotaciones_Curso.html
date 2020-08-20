@@ -14,6 +14,7 @@
     </head>
 
     <body>
+        
         <h1>Anotaciones del curso de Javascript</h1>
 
         <p>El curso es el siguiente: "The Modern JavaScript Bootcamp Course (2020)" de Udemy Business</p>
@@ -21,26 +22,17 @@
         
             
         <h2>NaN o Not a Number</h2>
-        <p> Hay una cosa importante que hay que saber de los numeros en JavaScript, que es el NaN, que es un valor especial en Javascript.
-            Es un valor especial en Javascript y SE CONSIDERA UN NUMERO. ES UN VALOR NUMERICO QUE REPRESENTA ALGO QUE NO ES UN NUMERO.
-            Hay diferentes formas en las que tu puedes caer en un NaN, dos casos simples:
-                - 0/0 //NaN
-                - 1 + NaN //NaN
-            Tenes que capitalizarlo correctamente para que se tome como el valor Not a Number.
-            Tenemos otros dos valores que son: Infinity, que se genera haciendo algo como 1/0. Javascript solo tiene una manera de representar 
-            un valor de infinidad. No hay manera de almacenarlo como un numero que uno pueda ver. Por lo que tenemos un valor especial llamado
-            Infinity. Hay tambien un -Infinity (infinito negativo): -1/0.
-            Tambien tenemos 0 y -0.
-            NaN no necesariamente significa que algo anda mal. A veces podes estar codeando algo que espera un NaN o que puede ser una posibilidad.
-            Por lo que, no es necesariamente un error pero significa que esto no es un estandar matematico o que javascript va a tener una
-            complicacion, representando este numero o este valor como un verdadero valor numerico.  
+        <p> Hay una cosa importante que hay que saber de los numeros en JavaScript, que es el NaN, que es un valor especial en Javascript. Es un valor especial en Javascript y SE CONSIDERA UN NUMERO. ES UN VALOR NUMERICO QUE REPRESENTA ALGO QUE NO ES UN NUMERO. Hay diferentes formas en las que tu puedes caer en un NaN, dos casos simples:
+               - 0/0 //NaN
+               - 1 + NaN //NaN
+            Tenes que capitalizarlo correctamente para que se tome como el valor Not a Number. Tenemos otros dos valores que son: Infinity, que se genera haciendo algo como 1/0. Javascript solo tiene una manera de representar un valor de infinidad. No hay manera de almacenarlo como un numero que uno pueda ver. Por lo que tenemos un valor especial llamado
+            Infinity. Hay tambien un -Infinity (infinito negativo): -1/0.Tambien tenemos 0 y -0. NaN no necesariamente significa que algo anda mal. A veces podes estar codeando algo que espera un NaN o que puede ser una posibilidad. Por lo que, no es necesariamente un error pero significa que esto no es un estandar matematico o que javascript va a tener una complicacion, representando este numero o este valor como un verdadero valor numerico.  
         </p>
         <h2>Variables y Let</h2>
-        <p> Variables son como frascos etiquetados para valores en JavaScript.
-            Podemos almacenar un valor y darle un nombre, entonces, podemos:
-                - volver a llamarlos
-                - usarlos
-                - o cambiarlos luego.
+        <p> Variables son como frascos etiquetados para valores en JavaScript. Podemos almacenar un valor y darle un nombre, entonces, podemos:
+               - volver a llamarlos
+               - usarlos
+               - o cambiarlos luego.
             La sintaxis basica que veremos primero es usar la palabra clave llamada Let:
                 let algunNombre = valor;
             De hecho, hay dos manerad diferentes en las que podemos crear variables en JavaScript:
@@ -48,24 +40,19 @@
                 - const
             Unas cosas que debes saber de las variables:
                 - Puedes llamarlas practicamente de cualquier manera, ejemplo:
-                    let let = 10; Javascript estara muy confundido porque let es una palabra reservada,
-                    es una palabra clave en el lenguaje de JavaScript, por lo que javascript piens que
-                    estamos intentando hacer otra variable ahi y como se puede ver, si prueba esa sentencia
-                    estará desabilitado.
-                    Otro ejemplo de esto es la palabra document, que es un objeto en javascript, por lo que
-                    si uno intenta hacer una variable con ese nombre, no te dejará.
+                let let = 10; Javascript estara muy confundido porque let es una palabra reservada, es una palabra clave en el lenguaje de JavaScript, por lo que javascript piens que estamos intentando hacer otra variable ahi y como se puede ver, si prueba esa sentencia
+                estará desabilitado. Otro ejemplo de esto es la palabra document, que es un objeto en javascript, por lo que si uno intenta hacer una variable con ese nombre, no te dejará.
 
-            Camelcase: Cuando tengo mas de una palabra en el nombre de la variable, se capitalizan las
-            primeras letras de las palabras, excepto de la primera palabra.
+            Camelcase: Cuando tengo mas de una palabra en el nombre de la variable, se capitalizan las primeras letras de las palabras, excepto de la primera palabra.
 
             Si intentas redeclarar una variable que ya has hecho, no te va a dejar.
         </p>
         <h2>Const: constantes</h2>
-        <p>const nombreVar = valor;
+        <p> const nombreVar = valor;
             Hay una gran diferencia con let, no podes cambiar el valor de la variable.
         </p>
         <h2>Algunos metodos de arrays interesantes</h2>
-        <p>Estos son:
+        <p> Estos son:
                 - Concat: para concatenar arrays
                 - Includes: buscar un valor dentro del arrays
                 - IndexOF: igual que el str.indexOf. para saber cual es su index?
@@ -76,43 +63,33 @@
                 - Sort: ordena un array. 
         </p>
         <h2>Nested Arrays</h2>
-        <p>Tener arrays dentro de arrays.
-            UN ejemplo del uso de esto, puede ser un tateti:
+        <p> Tener arrays dentro de arrays. Un ejemplo del uso de esto, puede ser un tateti:
             const board = [['0',null, '0'],
-                        [null,'X', '0'],
-                        ['X', '0', null]]
+                           [null,'X', '0'],
+                           ['X', '0', null]]
         </p>
         <h2>Scope y Function Scope</h2>
-        <p> Es como la visibilidad de una variable: el lugar donde una variable es definida indica en
-            donde se puede acceder a esa variable.
-            Hay multiples piezas/formas de como se comporta el scope en JavaScript.
-            El primer tipo de Scope es el Function Scope: me indica que las variables dentro de la funcion,
-            solo pueden ser accedidas dentro de esa misma funcion. No puedo acceder a una variable que esta
-            dentro de esa funcion. Esto entre otras cosa me permite, porder tener varias variables llamadas
-            de la misma manera dentro de funciones diferentes, e incluso tener una variable dentro de la
-            funcion y otra fuera de cualquier funcion y que se llamen igual
+        <p> Es como la visibilidad de una variable: el lugar donde una variable es definida indica en donde se puede acceder a esa variable. Hay multiples piezas/formas de como se comporta el scope en JavaScript. El primer tipo de Scope es el Function Scope: me indica que las variables dentro de la funcion, solo pueden ser accedidas dentro de esa misma funcion. No puedo acceder a una variable que esta
+            dentro de esa funcion. Esto entre otras cosa me permite, porder tener varias variables llamadas de la misma manera dentro de funciones diferentes, e incluso tener una variable dentro de la funcion y otra fuera de cualquier funcion y que se llamen igual.
         </p>
         <h2>Scope y Block Scope</h2>
-        <p>
-            Otro tipo de Scope, que se llama Block Scope, y no necesariamente tiene que ver con funciones, o,
-            al menos no directamente, pero se ha mencionado al principio de la seccion, cubriremos alguna 
-            funcion adjyacente contenida.
-            Veamos un ejemplo:
+        <p> Otro tipo de Scope, que se llama Block Scope, y no necesariamente tiene que ver con funciones, o, al menos no directamente, pero se ha mencionado al principio de la seccion, cubriremos alguna funcion adjyacente contenida. Veamos un ejemplo:
+            
             if (true){
                 let animal = 'eel';
             }
             console.log(animal);
-            Nos dará error porque la variable animal esta dentro del bloque condicional if. Los bloques en
-            javascript estan delimitados por {}. Hay que tener en cuenta que esto es muy diferente a lo que
-            sería un objeto literal o object literal que es tambien entre {}:
+            
+            Nos dará error porque la variable animal esta dentro del bloque condicional if. Los bloques en javascript estan delimitados por {}. Hay que tener en cuenta que esto es muy diferente a lo que sería un objeto literal o object literal que es tambien entre {}:
+            
             {
                 a: 1,
                 b: 2,
                 c: b
             }
-            esto de arriba es un objeto, lo del bloque if si es realmente un bloque. Lo mismo irá si tenemos
-            ejemplo, un while loop, for loop.
-            De manera que:
+            
+            esto de arriba es un objeto, lo del bloque if si es realmente un bloque. Lo mismo irá si tenemos ejemplo, un while loop, for loop. De manera que:
+            
             if (true){
                 let animal = 'eel';
                 console.lo(animal); //Acá si tengo acceso a la variable.
@@ -134,18 +111,11 @@
             }
             console.log(animal); //Acá también tengo acceso a la variable.
 
-            Esto nos indica que let y const tienen un reglas de scoping
-            diferentes a var. No hay block scope para var. Esto puede llegar
-            a ser problematico y es diferente a como otros lenguajes de
-            programacion funcionan, esto es porqeu let y const son propuestos
-            a parte de otras razones.
-            Hay otras distinciones entre el const y el let pero tambien por 
-            razones de scoping, y es por esto que puede llegar a ser
-            problematico.
-            Entonces, porque puede llegar a ser problematico tener declarada
-            una variable en el bloque y tener acceso a ella afuera?
-            Hay multiples razones, pero para ilustrar un simple problema con
-            el que solemos encontrarnos: 
+            Esto nos indica que let y const tienen un reglas de scoping diferentes a var. No hay block scope para var. Esto puede llegar
+            a ser problematico y es diferente a como otros lenguajes de programacion funcionan, esto es porqeu let y const son propuestos
+            a parte de otras razones. Hay otras distinciones entre el const y el let pero tambien por razones de scoping, y es por esto que puede llegar a ser
+            problematico. Entonces, porque puede llegar a ser problematico tener declarada una variable en el bloque y tener acceso a ella afuera?
+            Hay multiples razones, pero para ilustrar un simple problema con el que solemos encontrarnos: 
             
             var i = 10;
             let animal = ['grizzly bear', 'panda bear', 'spectacled bear']
@@ -153,14 +123,11 @@
                 console.log(i, animals[i])
             }
 
-            Y aquí esta el problema, si imprimo por pantalla, fuera del loop i,
-            sigue existiendo:
+            Y aquí esta el problema, si imprimo por pantalla, fuera del loop i, sigue existiendo:
 
             console.log(i);
 
-            Entonces, seguimos teniendo acceso al i, y esto puede llegar a ser problematico,
-            si por ejemplo, fuera del loop tuviera otra variable llamada i, por lo que el
-            loop me puede cambiar el valor de la variable i de fuera del loop.
+            Entonces, seguimos teniendo acceso al i, y esto puede llegar a ser problematico, si por ejemplo, fuera del loop tuviera otra variable llamada i, por lo que el loop me puede cambiar el valor de la variable i de fuera del loop.
 
             En cambio, si hago esto con let:
             var i = 10; //podemos usar tambien let en este caso.
@@ -171,9 +138,7 @@
 
             console.log(i); //el i que me retornará es el 10
 
-            si dos variables existen en diferentes scopes no van a interferir entre ellas ni
-            van a generar conflictos.
-            Con let y const no podemos el mismo identificador de variabe dos veces, con var si.
+            si dos variables existen en diferentes scopes no van a interferir entre ellas ni van a generar conflictos. Con let y const no podemos el mismo identificador de variabe dos veces, con var si.
 
             Una funcion que tambien incluye un bloque en el:
             function dobleArray(arr){
@@ -187,8 +152,7 @@
             }
         </p>
         <h2>Scope y Lexical Scope</h2>
-        <p> Cuando tenemos nested functions que es algo que a veces hacemos. 
-            Si utiliza cosas como react, utilizará muy seguido nested functions (funciones dentro de otras). 
+        <p> Cuando tenemos nested functions que es algo que a veces hacemos. Si utiliza cosas como react, utilizará muy seguido nested functions (funciones dentro de otras). 
             function outer(){ //no tengo acceso al afuera de esta funcion
                 let hero = "Black Panther";
 
@@ -208,11 +172,7 @@
                 inner();
             }
 
-            Pero que pasa si llamo la funcion inner por afuera de la funcion outer:
-            No tengo acceso a ella.
-
-            Por ende, a la funcion inner tengo acceso solo dentro de la funcion outer pero no fuera de ella.
-            Entonces, lexical scope se refiere al hecho de que nested functions la funcion outer y la funcion inner estan muy conectadas.
+            Pero que pasa si llamo la funcion inner por afuera de la funcion outer: No tengo acceso a ella. Por ende, a la funcion inner tengo acceso solo dentro de la funcion outer pero no fuera de ella. Entonces, lexical scope se refiere al hecho de que nested functions la funcion outer y la funcion inner estan muy conectadas.
             
             function outer(){ //no tengo acceso al afuera de esta funcion
                 let movie = "Black Panther";
@@ -232,12 +192,8 @@
             function nombreFuncion(Parámetros){
                 //return algo; //Puede o no retornar algo.
             }
-            Pero vamos a ver una sintaxis completamente diferente:
-            Se ve bastante similar pero es completamente diferente, que se llama function expression. 
-            Empiezan con una variable, la funcion en si no tiene un nombre, y la almaceno en la variable.
-            Puedo almacenar funciones en variables porque LAS FUNCIONES SON OBJETOS EN JAVASCRIPT.
-            Para llamarla, referencio el nombre de la variable y le paso el argumento de la funcion.
-            Ejemplo:
+
+            Pero vamos a ver una sintaxis completamente diferente: Se ve bastante similar pero es completamente diferente, que se llama function expression. Empiezan con una variable, la funcion en si no tiene un nombre, y la almaceno en la variable. Puedo almacenar funciones en variables porque LAS FUNCIONES SON OBJETOS EN JAVASCRIPT. Para llamarla, referencio el nombre de la variable y le paso el argumento de la funcion. Ejemplo:
 
             const square = function (num){
                 return num * num;
@@ -250,15 +206,13 @@
                 return x + y;
             }
 
-            La funcion ANONIMA equivalente es la siguiente, que tiene el inconveniente de que asi escrita tal cual,
-            no tengo manera de llamarla.
+            La funcion ANONIMA equivalente es la siguiente, que tiene el inconveniente de que asi escrita tal cual, no tengo manera de llamarla.
 
             function (x, y){
                 return x + y;
             }
 
-            Por lo que tengo que almacenarla en algun lado, o la uso en funciones que tienen funciones como parametros
-            o funciones que retornan funciones. 
+            Por lo que tengo que almacenarla en algun lado, o la uso en funciones que tienen funciones como parametros o funciones que retornan funciones. 
 
             const sum = function (x,y){
                 return x+y;
@@ -268,8 +222,7 @@
             console.dir(sum)
             console.dir(add)
 
-            la siguiente sigue siendo una function expression pero se trata de named function expression y la otra era una
-            anonimous function expression.
+            la siguiente sigue siendo una function expression pero se trata de named function expression y la otra era una anonimous function expression.
             const product = function multiply(x,y){
                 return x*y;
             }
@@ -334,11 +287,8 @@
             }
             callTwice(laugh) //Pasando la funcion como argumento, esta funcion pasada como argumento es a lo que llamamos callback function
         
-            Estas funciones son extremadamente comunes en javascript.
-            En javascript hay un metodo llamado setTimeout() el cual se ejecutara un determinado bloque de código o una funcion de codigo
-            despues de un determinado numero de milisegundos o segundos que nosotros le pasemos en numeros de milisegundos como: 5000.. Pero,
-            el primer elemento que le debemos pasar es una funcion, una funcion para correr y despues cuanto tiempo hay que esperar antes de
-            que se ejecute:
+            Estas funciones son extremadamente comunes en javascript. En javascript hay un metodo llamado setTimeout() el cual se ejecutara un determinado bloque de código o una funcion de codigo despues de un determinado numero de milisegundos o segundos que nosotros le pasemos en numeros de milisegundos como: 5000.. Pero,
+            el primer elemento que le debemos pasar es una funcion, una funcion para correr y despues cuanto tiempo hay que esperar antes de que se ejecute:
             setTimeout(func, 5000);
 
             Vamos a definir una funcion:
@@ -392,8 +342,7 @@
             console.log(shrimp); //Error de referencia, no podemos acceder a shrimp antes de su inicializacion.
             let shrimp = "Harlequin shrimp";
 
-            Entonces las declaraciones de variables con let no tienen hoisting como si lo tienen las declaraciones con var.
-            Y esa es una de las razones por las que usamos let. 
+            Entonces las declaraciones de variables con let no tienen hoisting como si lo tienen las declaraciones con var. Y esa es una de las razones por las que usamos let. 
 
             Y haciendo lo mismo con const:
             console.log(shrimp); //Error de referencia, no podemos acceder a shrimp antes de su inicializacion.
@@ -511,8 +460,7 @@
 
             Pero obviamente la mejor manera es la del forEach, ya que me olvido de los index.
 
-            Hay otra cosa más que hay que saber del forEach. Tambien podemos agregar un segundo parametro a nuestro callback
-            si queremos usar el index.
+            Hay otra cosa más que hay que saber del forEach. Tambien podemos agregar un segundo parametro a nuestro callback si queremos usar el index.
             numbers.forEach(function(num, idx){
                 console.log(idx, num);
             });
@@ -531,31 +479,25 @@
         </p>
 
         <h2> Arrow functions</h2>
-        <p> Alternatuva sintacticamente compacta a una expresion de funcion regular.
-            Internet explorer no tiene soporte a las mismas. 
-
-            Es otra forma de escribir funciones:
-            Arrow functions no fueron introducidas porque son mas compactas o simples, hay otra diferencia, de como se comportan. 
+        <p> Alternatuva sintacticamente compacta a una expresion de funcion regular. Internet explorer no tiene soporte a las mismas. Es otra forma de escribir funciones: Arrow functions no fueron introducidas porque son mas compactas o simples, hay otra diferencia, de como se comportan. 
             
             2 reglas cuando escribis arrow functions:
                 - Parentesis son opcionales si hay solo un parametro:
-                  const square = x => {
-                      return x * x;
-                  }
+                   const square = x => {
+                       return x * x;
+                   }
                 - Usar parentesis vacios para funciones sin parametros:
-                  const singASong = () => {
-                      return "LA LA LA LA LA";
-                  }
+                   const singASong = () => {
+                       return "LA LA LA LA LA";
+                   }
         </p>
 
         <h2>Arrow functions: Implicit returns</h2>
-        <p> Implicit returns: Solo funcionan en ciertos escenarios. Agregar un implicit return a una funcion significa que no tienes que escribir
-            la palabra return. Y en algunos escesarios puedes escribir una linea de arrow function. 
+        <p> Implicit returns: Solo funcionan en ciertos escenarios. Agregar un implicit return a una funcion significa que no tienes que escribir la palabra return. Y en algunos escesarios puedes escribir una linea de arrow function. 
         </p>
 
         <h2>Find</h2>
-        <p>Otro de los metodos del array que espera un callback.
-            Retorna el valor de el primer elemento en un array que satisface la funcion testeadora provista:
+        <p>Otro de los metodos del array que espera un callback. Retorna el valor de el primer elemento en un array que satisface la funcion testeadora provista:
 
             let movies = {
                 "The Fantastic Four",
@@ -570,8 +512,7 @@
 
             let movie2 = movies.find(m => m.indexOf("The") === 0);
         
-            La funcion que le pasamos es necesario que retorne verdadero o falso.
-            SOLO RETORNA UN VALOR, INCLUSO SI HAY 10 MATCHEOS, SOLO RETORNARÁ EL PRIMER MATCH. 
+            La funcion que le pasamos es necesario que retorne verdadero o falso. SOLO RETORNA UN VALOR, INCLUSO SI HAY 10 MATCHEOS, SOLO RETORNARÁ EL PRIMER MATCH. 
 
         </p>
 
@@ -993,7 +934,7 @@
         </ul>
         
         <p id = "main">Este es un parrafo para DOM Manipulation.
-            Como se ve?
+            Como se ve? Dime que se ve. A ver donde estoy.
         
             <b style="display: none;">1,2,3,4 probando</b>
             saafasfgw
@@ -1077,6 +1018,67 @@
             como hacemos para detear algo desde el DOM.
         </p>
 
+        <h2>RemoveChild y Remove</h2> 
+        <p>Para remover elementos de la pagina web.</p>
+
+        <h2>DOM Events</h2> 
+        <p> Hay muchas cosas que podes hacer como:
+                - clicks
+                - drags
+                - drops
+                - hovers
+                - scrolls
+                - form submission
+                - key presses
+                - focus/blur 
+                - mouse wheel
+                - double click
+                - copying
+                - pasting
+                - audio start 
+                - screen resize
+                - printing
+            Pero la manera en la cual incorporamos estos eventos en nuestro codigo siguen el mismo patron:
+            Tenemos un primer elemento que es llamado the thing que escucha a la presencia de un determinado evento, el tipo de evento en sí,
+            y el codigo que quiero correr.
+            The thing puede ser un boton, al cual cliqueo (evento), y el código puede ser ejemplo cambiar de color.
+            
+            Agreguemos algunos elementos:
+        </p>
+        <!--Esto es un ejemplo de algo que no se recomienda hacer, agregar inline event handlers. Existe otra manera de hacer esto, que es
+        seleccionar el elemento y luego agregar el onclick o onmouseover.-->
+
+        <!--Todos estos siguen el mismo patron: onEVENTNAME = "do something"-->
+        <!--Correr codigo cuando cliqueamos un botos mediante el atributo onclick. El primer event listener a un boton-->
+        <button onclick="alert('Me has cliqueado!!')">Cliqueame!</button>
+        <button onclick="alert('Me has cliqueado tambien!!')">Cliqueame!</button>
+        <button onmouseover="alert('Has pasado el mouse por aqui!!')">Cliqueame!</button>
+        <!--Tambien podemos agregar un segundo atributo: onclick y onmouseover-->
+
+        <!--Botones que realmente utilizaremos con javascript:-->
+        <button id="clicker">CLICKER</button>
+
+        <form action="">
+            <!--Podemos agregarle onclick a otras cosas como los inputs-->
+            <input onclick="console.log('has cliqueado el input')" type="range" min="10" max="50">
+        </form>
+
+        <h2>addEventListener</h2> 
+        <p>Ahora veremos porque la segunda manera que vimos en la leccion anterior no es la mejor, y luego veremos este metodo.</p>
+        <button id="btn">Cliqueame</button>
+
+        <h2>The imposible button demo</h2> 
+        <p>Un boton que cuando quieres acercarte a cliquearlo, se mueve y tienes que ir persiguiendolo para poder cliquearlo.</p>
+
+        <h2>Eventos en multiples elementos</h2> 
+        <p></p>
+
+        <h2></h2> 
+        <p></p>
+        <h2></h2> 
+        <p></p>
+        <h2></h2> 
+        <p></p>
         <h2></h2> 
         <p></p>
 
