@@ -1,3 +1,7 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(216, 93, 93, 0.459);
+}
 .local{
     background-color: rgba(250, 20, 12, 0.486);
 }
@@ -6,9 +10,13 @@
 }
 
 li{
+    border: 1px solid black;
+    width: 300px;
     list-style: none;
     text-align: justify;
-
+    padding: 10px;
+    font-weight: bold;
+    font-size: 17px;
 }
 .header{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
