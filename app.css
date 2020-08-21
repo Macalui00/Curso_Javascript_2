@@ -57,4 +57,16 @@ input[type="password"] {
   text-decoration: lin-through;
   opacity: 50%;
 }
-
+#boxes{
+  display: flex; /*una manera relativamente facil de posicionar elementos en la pagina dividir el espacio.*/
+  justify-content: center;
+  align-items: center;
+}
+.box{
+  width: 200px;
+  height: 200px;
+  /* margin-left: 20px; */
+}
+#header-color{
+  text-align: center;
+}

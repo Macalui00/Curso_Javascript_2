@@ -479,7 +479,7 @@ function giveMeFour(a,b,c,d){
 //giveMeFour(2,3,4,5)
 
 //Y luego pongo lo siguiente:
-const colors = ["red", "yellow", "blue", "green"];
+//const colors = ["red", "yellow", "blue", "green"];
 //giveMeFour(colors)
 //Me asignara todo el array al a. 
 
@@ -1235,12 +1235,12 @@ console.log(head1.style.color);
 
 //Cuando creamos una pagina web comunmente tenemos grupos de estlo que queremos aplicar a diferentes elementos y que mantenemos cierto tema,
 //usualmente usamos una clase y esto es como obtenemos otra alternativa de darle estilo.
-const colores = ["red", "orange", "blue", "yellow","green", "purple"];
+// const colores = ["red", "orange", "blue", "yellow","green", "purple"];
 
-allLis.forEach((li, i)=>{
-    const color = colores[i];
-    li.style.color = color;
-})
+// allLis.forEach((li, i)=>{
+//     const color = colores[i];
+//     li.style.color = color;
+// })
 
 //Es importante tener en cuenta porque esto funciona sobre otros estilos.
 //La diferencia entre inline y los class styles es que va a predominar uno sobre otro, es decir, ejemplo:
@@ -1516,3 +1516,55 @@ window.addEventListener("scroll", function(){
 //Es probable que no queramos ejecutar esta funcion cada vez que ocurra, cada vez que cambie el scroll position por cada pixel.
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
+//Multiples eventos:
+
+// const printColor = function(box){
+//     console.log(box.style.backgroundColor);
+// }
+
+// const printColor = function(){
+//     console.log(this); //Esto funciona porque a esta funcion es llamada en un metodo de un objeto, por ende hace referencia a ese mismo objeto. 
+//     console.log(this.style.backgroundColor);
+// }
+
+const changeColor = function(){
+    const h1 = document.querySelector("#header-color");
+    h1.style.color = this.style.backgroundColor;
+}
+    
+const colores = ["red", "orange", "blue", "yellow","green", "purple", "indigo", "violet"];
+
+//Quiero hacer un loop con todos ellos y crear un div en la pagina con ese mismo color de background.
+//Creamos un contenedor en el html para contener todos lo boxes.
+const container = document.querySelector("#boxes");
+for(let color of colores){
+    const box = document.createElement("div");
+    box.style.backgroundColor = color;
+    box.classList.add("box");
+    container.appendChild(box);
+    //Que pasa si el siguiente codigo es demasiado largo y lo quiero separar para reducir el loop? Puedo crear una funcion separada.  
+    // box.addEventListener("click", function(){
+    //     printColor(box); //El tema de porque escribimos asi una funcion anonima que llama a la funcion, es porque como le tenemos que pasar un parametro
+    // }); //Si colocamos la funcion con parametro en el parametro de addEventListener, estariamos llamando a la funcion en vez de pasarle la funcion.
+    // //Hay otra manera de hacer esto ultimo:
+    // box.addEventListener("click", printColor);
+    box.addEventListener("click", changeColor);
+} 
+
+/*-------------------------------------------------------------------------------------------------------------------------*/
+const parrafoTip = document.querySelector("#info-tipeada");
+document.body.addEventListener("keypress",function(e){
+    
+        if (e.key === " "){
+            parrafoTip.innerHTML = parrafoTip.innerHTML + "&#32;";
+        }else if (e.key === "Enter"){
+            parrafoTip.innerHTML = parrafoTip.innerHTML + "<br>";
+        }else{
+            parrafoTip.innerHTML = parrafoTip.innerHTML + e.key;
+        }
+        
+    
+
+    console.log(e); //hay casos donde me interesa saber que tecla se utilizo. 
+});
+
