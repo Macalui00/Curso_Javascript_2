@@ -70,3 +70,9 @@ input[type="password"] {
 #header-color{
   text-align: center;
 }
+
+#btn-mover{
+  font-size: 40px;
+  background-color: rgba(210, 105, 30, 0.246);
+  border: 1px solid burlywood;
+}

@@ -1552,19 +1552,320 @@ for(let color of colores){
 } 
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
-const parrafoTip = document.querySelector("#info-tipeada");
+const parrafoTip = document.querySelector("#info-tipeada"); //prueba propia
 document.body.addEventListener("keypress",function(e){
-    
+    //Prueba propia
         if (e.key === " "){
             parrafoTip.innerHTML = parrafoTip.innerHTML + "&#32;";
         }else if (e.key === "Enter"){
             parrafoTip.innerHTML = parrafoTip.innerHTML + "<br>";
         }else{
             parrafoTip.innerHTML = parrafoTip.innerHTML + e.key;
-        }
-        
-    
-
+        }     
+    //fin de Prueba propia
     console.log(e); //hay casos donde me interesa saber que tecla se utilizo. 
 });
+
+/*---------------------------------------------------------------------------------------------------------------------------- */
+//KeyPress, Keyup, Keydown
+
+const input = document.querySelector("#username");
+
+input.addEventListener("keydown", function(e){
+    console.log("Key Down!");
+});
+
+//Keydown son letras, shift, |, capslog... Entonces no es solo los caracteres que en realidad estoy escribiendo dentro del input. 
+
+
+input.addEventListener("keyup", function(e){
+    console.log("Key Up!");
+});
+//Aca, con los caracteres tambien se activa, con el espacio tambien, shift no, key up solo ocurre cuando la accion realmente sucede, cuando se realiza un input.  
+
+input.addEventListener("keypress", function(e){
+    console.log("Key Press!");
+});
+//La funcionalidad de este ultimo varia de browser en browser pereo en resumen, el keypress tiene que ser un caracter qeu se muestre en el input o un cambio como el espacio.
+
+//La eleccion de cada uno varia, por ejemplo, si estoy creando un juego donde importa el uso de las flechas del teclado, keypress no te va a servir. 
+//Si a vos solo te interesa que sucede en el input, hay que usar el keypress. 
+
+
+const addItemInput = document.querySelector("#addItem");
+const itemsUL = document.querySelector("#items");
+// let item;
+
+// addItemInput.addEventListener("keypress", function(e){
+//     if (e.key !== "Enter"){
+//         if (e.key === " "){
+//             item = item + "&#32;";
+//         } else{
+//             item = item + e.key;
+//         }  
+//     }else{
+//         const itemIL = document.createElement("il");
+//         itemIL.innerHTML = item;
+//         itemsUL.appendChild(itemIL);
+//         item = "";
+//     }
+// })
+
+//Manera mas sencilla
+
+addItemInput.addEventListener("keypress", function(e){
+    if (e.key === "Enter"){
+        //agregar un nuevo item en la lista:
+        //Si no tiene valor no se puede insertar
+        if(!this.value) return;
+        //Obtengo el valor del input
+        const newItemText = this.value;
+        //Creo un Li con el valor del input
+        const newItem = document.createElement("li");
+        newItem.innerText = newItemText;
+        //Lo agrego a la lista
+        itemsUL.appendChild(newItem);
+        //Borro el texto del input:
+        this.value = "";
+    }
+})
+
+/*--------------------------------------------------------------------------------------------*/
+//Trabajo con formularios
+const creditCardInput = document.querySelector("#cc");
+const termsCheckbox = document.querySelector("#terms");
+const veggieSelect = document.querySelector("#veggie");
+
+form.addEventListener("submit", function(e){
+//IMPORTANTE, TAREA PARA EL FUTURO, NO ME FUNCIONA EL PREVENTDEFAULT
+
+    //Yo no quiero que se reinicie la pagina cada vez que le doy submit, y para eso hay un metodo en el objeto evento: prevent default
+    e.preventDefault(); //Previene el comportamiento de default, en este caso que te redirija o actualice la pagina.
+    //Esto nos da la flexibilidad de hacer algo con la informacion y podemos capturar este evento submit
+    alert("Submited the form!");
+    console.log("cc",creditCardInput.value);
+    console.log("terms", termsCheckbox.checked);
+    console.log("veggieSelect", veggieSelect.value);
+    })
+/*-------------------------------------------------------------------------------------------------------------*/
+//Input y Change Events:
+//Creemos una estructura objeto que automaticamente este en sincronia o estara actualizado con cualquier cosa que el usuario este tipeando
+// {
+//     cc:"123214141231",
+//     terms: false,
+//     vegie: "carrot"
+// }
+
+const formData = {};
+// //Que esta estructura este automaticamente actualizada y no tener que esperar a un evento submit.
+// creditCardInput.addEventListener("input", e =>{
+//     console.log("CC change", e);
+//     //Creo una variable, donde almaceno el nro de tarjeta o, lo actualizo, en el caso de que la variable exista. 
+//     formData["cc"] = e.target.value;
+// });
+
+// veggieSelect.addEventListener("input", e =>{
+//     console.log("Veggie change", e);
+//     //Creo una variable, donde almaceno el valor del veggie o, lo actualizo, en el caso de que la variable exista. 
+//     formData["veggie"] = e.target.value;
+// });
+
+// termsCheckbox.addEventListener("input", e =>{
+//     console.log("checkbox change", e);
+//     //Creo una variable, donde almaceno el bool del checkbox o, lo actualizo, en el caso de que la variable exista. 
+//     formData["agreeToTerms"] = e.target.checked; //En el caso de los checkbox nos interesa el checked no el valor.
+// });
+
+//Con esto no tenemos que esperar a que el usuario le de a submit
+
+//Aun así hay una mejor manera de escribir lo anterior, para lo cual le daremos un nombre a cada input. 
+//Voy a crear un array con cada uno de los inputs para recorrerlos con un loop
+
+// for (let input of [creditCardInput, termsCheckbox, veggieSelect]){
+//     input.addEventListener("input", ({target}) => {
+//         //Utilizo el nombre del evento para poder almacenar la informacion correspondiente en el objeto
+//         const {name,type, value, checked} = target;
+//         //Para asegurarnos de que en el caso de que sea un checkbox se almacene el checked y no el value.
+//         formData[name] = type === "checkbox" ? checked : value;
+//     })
+// }
+
+//Ahora bien, nosotros tambien mencionamos que hay un evento llamado change:
+//Si nosotros cambiamos el evento a change...
+for (let input of [creditCardInput, termsCheckbox, veggieSelect]){
+    input.addEventListener("input", ({target}) => {
+        //Utilizo el nombre del evento para poder almacenar la informacion correspondiente en el objeto
+        const {name,type, value, checked} = target;
+        //Para asegurarnos de que en el caso de que sea un checkbox se almacene el checked y no el value.
+        formData[name] = type === "checkbox" ? checked : value;
+    })
+};
+
+//Lo que hace es que hasta que uno no finaliza de escribir o le da a enter no actualiza el valor del input en la estructura deseada.
+/*---------------------------------------------------------------------------------------------------------*/
+//Callback Hell:
+ const btn_mover = document.querySelector("#btn-mover");
+// setTimeout(()=> {
+//    btn_mover.style.transform = `translateX(100px)`; 
+//    setTimeout(()=>{
+//         btn_mover.style.transform = `translateX(200px)`; 
+//    },2000); //2 segundos
+// },1000); //1000 milisegundos
+//Esto lo puedo seguir multiplicando, anidando si quisiera asegurarme que uno esta sucediendo despues del otro.
+
+//Ahora vamos a setear esto de la siguiente manera:
+
+// const btn_mover = document.querySelector("#btn-mover");
+// setTimeout(()=> {
+//    btn_mover.style.transform = `translateX(100px)`; 
+//    setTimeout(()=>{
+//         btn_mover.style.transform = `translateX(200px)`;
+//         setTimeout(()=>{
+//             btn_mover.style.transform = `translateX(200px)`;
+//             setTimeout(()=>{
+//                 btn_mover.style.transform = `translateX(200px)`;
+//                 setTimeout(()=>{
+//                     btn_mover.style.transform = `translateX(200px)`; 
+//                },1000); 
+//            },1000);  
+//        },1000);  
+//    },1000); 
+// },1000); //1000 milisegundos
+//Esto se mueve cada un segundo. 
+
+//Hay una mejor manera de hacer lo anterior
+// const moveX = (elem,amount, delay,callback) =>{
+//     setTimeout(()=>{
+//         elem.style.transform = `translateX(${amount}px)`
+//         if (callback) callback();
+//     },delay)
+// }
+
+// const moveX = (elem,amount, delay,callback) =>{
+//     //obtenemos el tamaño de la pantalla
+//     const bodyBoundary = document.body.clientWidth;
+//     const elRight = elem.getBoundingClientRect().right; //Rectangulo del boton
+//     //vamos a comparar el right del boundingClientRect con el document.clientWidth que sería el tamaño de la ventana
+//     const currLeft = elem.getBoundingClientRect().left;
+//     if (elRight + amount > bodyBoundary) {
+//         console.log("DONE - CANT GO THAT FAR");
+//     }else {
+//         setTimeout(()=>{
+//             elem.style.transform = `translateX(${currLeft + amount}px)`
+//             if (callback) callback();
+//         },delay)
+//     }
+
+// }
+
+const moveX = (elem,amount, delay,callback,onSuccess, onFailure) =>{
+   
+    setTimeout(()=>{
+        //obtenemos el tamaño de la pantalla
+        const bodyBoundary = document.body.clientWidth;
+        const elRight = elem.getBoundingClientRect().right; //Rectangulo del boton
+        //vamos a comparar el right del boundingClientRect con el document.clientWidth que sería el tamaño de la ventana
+        const currLeft = elem.getBoundingClientRect().left;
+        if (elRight + amount > bodyBoundary) {
+            onFailure();
+        }else {
+            elem.style.transform = `translateX(${currLeft + amount}px)`
+            onSuccess();
+        }
+    },delay);
+
+};
+
+//Y aquí viene el truco, si quiero que algo ocurra inmediatamente despues de otra cosa
+//le pasamos un callback
+// moveX(btn_mover, 600, 2000, () => {
+//     moveX(btn_mover, 200,1000);
+// });
+
+//De esta manera puedo seguir llamando a callbacks:
+// moveX(btn_mover, 600, 2000, () => {
+//     moveX(btn_mover, 200,1000, () => {
+//         moveX(btn_mover, 300, 1000, () =>{
+//             moveX(btn_mover, 400, 1000);
+//         });
+//     });
+// });
+
+//Esto ya se vuelve enroscado, loco y feo:
+// moveX(btn_mover, 100,100, () =>{
+//     //succes
+//     moveX(btn_move,400,1000, () =>{
+//         //success
+//     moveX(btn_move,400,1000, () =>{
+//         //success
+//     },() =>{
+//         //Fail
+//         alert("CANNOT MOVE FURTHER!");
+//     })
+//     },() =>{
+//         //Fail
+//         alert("CANNOT MOVE FURTHER!");
+//     })
+// },() =>{
+//     //Fail
+//     alert("CANNOT MOVE FURTHER!");
+// } )
+
+//Usando promesas, ESTO SI, QUE A COMPARACION DE LO DE ARRIBA, ES UN CODIGO MAS LINDO Y LEGIBLE. 
+moveXPromise(btn_mover,100, 1000)
+    .then(()=> moveXPromise(btn, 100,1000))
+    .then(()=> moveXPromise(btn, 100,1000))
+    .then(()=> moveXPromise(btn, 100,1000))
+    .then(()=> moveXPromise(btn, 100,1000))    
+    .then(()=> moveXPromise(btn, 100,1000))
+    .catch((position) => {
+        alert("CANNOT MOVE FURTHER!");
+    });
+//Hagamos algo incluso mas complejo/loco, veamos si el boton se va fuera de la pantalla y si lo hace que haga algo.
+
+/*Este es un patron muy comun cuando trabajamos con codigo asincronico. 
+Frecuentemente hacemos un HTDP request, el tema es que es requerido por una razon.
+Estamos intentando algo, estamos pidiendole algo.
+
+Digamos que este es el nombre de una funcion que hace request: request(), esta aceptará dos callbacks, un callback
+exitoso y un callback fallido. Entonces tendras dos ramas, en el caso de que el pedido funciona y en el caso de que
+no funcione.
+Entonces intentaremos imitar esta funcionalidad en la funcion moveX. 
+Se ejecutará nuevamente el moveX y cuando se pase al tamaño de pantalla se detendrá.
+
+Ahora escribamos esta funcion pero para que tenga la version exitosa y la version no exitosa
+-------------------------------------------------------------------------------------------------------
+//Promesas
+
+Usando promises se soluciona el problema de que sea codigo anidado y feo. 
+*/
+
+//La manera en la que hacemos nuevas promesas:
+// cont willGetYouADog = new Promise ((resolve, reject)=>{
+//     resolve();
+// })
+
+//Porque no creamos una funcion que de manera random se resuelva o se rechace.
+const willGetYouADog = new Promise ((resolve, reject)=>{
+    const rand = Math.random();
+    if (rand < 0.5){
+        resolve();
+    }else{
+        reject();
+    };
+});
+willGetYouADog().then(() => {
+    //Este codigo se corre cuando la promesa se resuelve
+    console.log("YAY TENEMOS UN CODIGO")
+}).catch(() => {
+    //El catch lo podemos enlazar así, o por separado con un willGetYouADog.catch(...)
+    console.log("NO DOG");
+});
+willGetYouADog();
+willGetYouADog();
+willGetYouADog();
+willGetYouADog();
+//Entonces esto fue como creamos una promesa, lo siguiente y extremadamente importante es como interactuamos con la promesa.
+//Como corro código si la promesa fue rechazada o resuelta. Aqui es cunado conocemos al .then
+//cada promesa tiene un metodo then y un metodo llamado catch
 

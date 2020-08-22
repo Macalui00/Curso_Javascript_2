@@ -17,10 +17,20 @@
         
         <h1>Anotaciones del curso de Javascript</h1>
 
-        <p>El curso es el siguiente: "The Modern JavaScript Bootcamp Course (2020)" de Udemy Business</p>
-
+        <p>El curso es el siguiente: "The Modern JavaScript Bootcamp Course (2020)" de Udemy. Este curso esta compuesto por 34 secciones donde se podra aprender lo siguiente:<br>
+            &nbsp;&nbsp;&nbsp; - Learn everything there is to know about Javascript - from scratch! <br>
+            &nbsp;&nbsp;&nbsp; - Build beautiful web apps to add to your portfolio<br>
+            &nbsp;&nbsp;&nbsp; - Get job ready with a deep understanding of the internals of JS<br>
+            &nbsp;&nbsp;&nbsp; - Work with Node JS and Express<br>
+            &nbsp;&nbsp;&nbsp; - Create a full E-Commerce app complete with authentication<br>
+            &nbsp;&nbsp;&nbsp; - Automate testing your code by creating your own custom testing framework!<br>
+            &nbsp;&nbsp;&nbsp; - Build your own physics-based JavaScript game<br>
+            &nbsp;&nbsp;&nbsp; - Understand how Javascript developers work on a day-to-day basis<br>
+            &nbsp;&nbsp;&nbsp; - Master the latest JS features like async and arrow functions<br>
+            Si estas interesado en saber más del curso<a href="https://www.udemy.com/course/javascript-beginners-complete-tutorial" title="Curso Udemy">click aquí</a>.</p>
+        <p>Como este curso lo empeze ya habiendo empezado otro curso de JavasCript hay ciertos temas que por el momento he omitido o no he tenido la necesidad de hacer anotaciones.</p>
         
-            
+        <h2>Sección 2: JS valores y variables</h2>   
         <h2>NaN o Not a Number</h2>
         <p> Hay una cosa importante que hay que saber de los numeros en JavaScript, que es el NaN, que es un valor especial en Javascript. Es un valor especial en Javascript y SE CONSIDERA UN NUMERO. ES UN VALOR NUMERICO QUE REPRESENTA ALGO QUE NO ES UN NUMERO. Hay diferentes formas en las que tu puedes caer en un NaN, dos casos simples:
                - 0/0 //NaN
@@ -51,6 +61,8 @@
         <p> const nombreVar = valor;
             Hay una gran diferencia con let, no podes cambiar el valor de la variable.
         </p>
+
+        <h2>Seccion 5: Captura Collecciones de Datos con Arrays</h2>
         <h2>Algunos metodos de arrays interesantes</h2>
         <p> Estos son:
                 - Concat: para concatenar arrays
@@ -388,7 +400,7 @@
                 console.log("iuujuuuu")
             }
         </p>
-
+        <h2>Seccion 10: Aplicar funciones para la coleccion de datos</h2>
         <h2>ForEach</h2>
 
         <p> Acepta una funcion callback. Llama a la funcion una vez por elemento en el array.
@@ -597,7 +609,7 @@
             Ahora vamos a ver una manera completamente diferente de usar reduce donde podemos contar los resultados desde un array, podemos agrupar diferentes valores en un array usando un objeto. 
 
         </p>
-
+        <h2>Seccion 11</h2>
         <h2>Default Parameters</h2>
         <p> En el pasado se podía poner un default parameter en una funcion, en caso de que por ejemplo, si una funcion tiene dos parametros e ingresas uno solo, te siga retornando algun valor.
             Ejemplo:
@@ -787,7 +799,7 @@
             Podemos usar la misma destructuring sintaxis pero poniendola dentro de los parentesis de una definicion de funcion que lo que hará 
             es extraer o desempacar valores de los argumentos pasados.
         </p>
-
+        <h2>Seccion 11: Metodos de objetos y la palabra clave "This"</h2>
         <h2>Shorthand properties</h2>
         <p> Es algo introducido en 2015 y no presenta soporte en Internet Explorer. 
             Es una buena y facil manera de crear un objeto literal cuando tiene variables y quieres crear una propiedad donde el key name es el
@@ -853,7 +865,7 @@
 
             Esto demuestra que a veces es mejor utilizar arrow functions porque no queremos un nuevo this. 
         </p>
-
+        <h2>Seccion 13: JS en el Browser - DOM Manipulation</h2>
         <h2>DOM Manipulation</h2>
         <p> DOM o Document Object Model es nuestra ventana dentro de HTML y CSS y de la pagina web en general, a traves de Javascript.
             Podemos cambiar cosas en la página web. 
@@ -971,7 +983,7 @@
             Algo para notar es que nos devuelve un nodelist a diferencia de los que nos devuelve un getElemento.
             Es otro tipo de coleccion. Una diferencia con un html colection es que con el nodelist podemos utilizar el foreach.
         </p>
-
+        <h2>Seccion 14</h2>
         <h2>Trabajando con innerText y textContent</h2> 
         <p>Accediendo a text desde un elemento. Como obtenemos los contenidos de un elemento.</p>   
         
@@ -1020,7 +1032,7 @@
 
         <h2>RemoveChild y Remove</h2> 
         <p>Para remover elementos de la pagina web.</p>
-
+        <h2>Seccion 15: Comunicandose con los eventos</h2>
         <h2>DOM Events</h2> 
         <p> Hay muchas cosas que podes hacer como:
                 - clicks
@@ -1087,12 +1099,96 @@
         <h2>Key Events: Keypress, Keyup, Keydown</h2> 
         <p>Hay al menos 3 opciones para "escuchar" el tecleado de teclas.</p>
         <input id="username" placeholder="username" type="text">
-        
-        <h2></h2> 
-        <p></p>
-        <h2></h2> 
-        <p></p>
+        <h3>Shopping List</h3>
+        <input type="text" id="addItem" placeholder="ingrese una comida">
+        <ul id="items"></ul>
 
+        <h2>Form Events y Prevent Default</h2> 
+        <p></p>
+        <form id="signup-form" action="/NOOOO" method="get"> <!--Toma los datos como input u los envia a algun lado, hecho de esta manera cuando le damos a submit se actualiza la página-->
+            <input name= "creditCard" type="text" placeholder="credit card" id = "cc">
+            <label>
+                Estoy de a cuerdo con ceder mi alma a tu compañia.
+                <input name = "agreeToTerms" type="checkbox" id="terms">
+            </label>
+            <select name = "selectedVeggie" name="" id="veggie">
+                <option value="eggplant">Eggplant</option>
+                <option value="asparagus">Asparagus</option>
+                <option value="carrot">Carrot</option>
+            </select>
+            <input type="submit">
+        </form>
+
+        <h2>Input y Change Events </h2> 
+        <p>Dos eventos muy similares.</p>
+        <h2>Seccion 16: Código asincrónico, llamadas de retorno y Promesas</h2>
+        <h2>Call Stack</h2> 
+        <p>Es una herramienta de JavaScript, es algo que veras en muchos otros programas.
+            Lo que hace es ayudar a JavaScript de mantener una orientacion de en que parte del codigo se encuentra.
+            Si tenes multiples funciones y algunas de ellas llama a otras funciones, call stack es el mecanismo por el cual
+            el interprete de JavaScript mantiene una orientacion de su lugar. Es la manera en la cual JavaScript sabe que funcion
+            es la que actualmente esta siendo ejecutada, que funciones no han terminado aun pero esperan resultados o valores de 
+            retorno. 
+            Podemos pensarlo de la siguiente manera, si nuestro script con un monton de funciones fuera un libro enorme, el call
+            stack es el marcador de libros o tu dedo que usar para buscar donde estas.
+            El stack hace referencia a la estructura de computadoras llamada pila donde se va a almacenar todas aquellas funciones
+            que estan a la espera de finalizar.
+            ¿Como funciona?
+            Cuando un script llama a una funcion, el interprete agrega la misma al call stack y luego empieza a llevar a cabo la
+            funcion.
+            Cualquier funcion que es llamada por esa funcion es agregada a la call stack arriba de todo, y corre donde sus llamadas son
+            alcanzadas.
+            Cuando la funcion actual es finalizada, el interprete saca del stack y retoma la ejecucion en donde la dejo la ultima vez que lo corrio. 
+        </p>
+
+        <h2>JS es un lenguaje de un solo hilo o single threaded language</h2> 
+        <p> Cualquier punto dado en nuestro script, cualquier script que este siendo ejecutado, es ejecutado como mucho una linea de nuestro codigo JS
+            a la vez.
+            Hasta que una linea de codigo no finalice, no se continuará con el resto del codigo que falte. Esto puede llegar a ser una limitacion severa si 
+            hacemos cosas que tomen tiempo, si hacemos cosas que no sean inmediatas, no queremos tener un usuario sentado ahi esperando y no teniendo otro
+            codigo corriendo.
+            Nosotros tenemos una manera de evitar esto. 
+        </p>
+
+        <h2>Como las llamadas asincronicas realmente funcionan</h2>
+        <p> Como se ha mencionado en la leccion anterior, solemos hacer consultas o solicitudes que toman tiempo y que ese tiempo de espera es tiempo muerto.
+            Para aquellos procesos que timan tiempo, le pasamos una funcion callback o de retorno y esas funciones seran ejecutadas al tiempo apropiado despues 
+            de que el intervalo ha pasado, en el caso de el seteado de tiempo.
+            El secreto aca es que el browser es el que hace el trabajo. Javascript no es la misma cosa que tu browser. Javascript es un lenguajes que es 
+            implementado en nuestro browser. Pero el browser en si mismo, como el chrome o el safari, etc, esos browsers son escritos usualmente en C++, un 
+            diferente lenguaje de programacion en el browser es capaz de hacer ciertas tareas que javascript no puede hacer o cosas que toman tiempo.
+            Ok, Pero, ¿Como?
+            Los browsers vienen con APIs Web que son capaces de manejar ciertas tareas en el fondo (como el hacer requests o setTimeout).
+            El call stack de Javascript reconoce estas funcones de APIs Web y las pasa a el browser para que se encargue de ellas.
+            Una vez que el browser finaliza esas tareas, ellos son retornados y quitados de la pilla como un retorno de llamada (callback). 
+        </p>
+
+        <h2>Bienvenido al infierno de callbacks</h2>
+        <p>Ya vimos que el browser se encarga de esas tareas y el nos pasa un callback pero los callbacks no son perfectos. Pueden ensuciarse rapidamente, que es lo
+            que veremos aqui. Ahora veremos una manera de hacer algo con callbacks y despues veremos como refactorizarlo utilizando promeses.
+        </p>
+
+        <button id="btn-mover">Mueveme!</button>
+
+        <h2>Introduccion a Promises!</h2>
+        <p> En la leccion pasada vimos como usar un conjunto de callbacks y anidar cosas puede realmente irse de las manos. El código es largo y dificil de entender.
+            Existe un termino para esto que es el de CALLBACK HELL.
+            Aquí es cuando promises aparece. Nos permite escribir codigo asincronico que es mucho mas facil de leer y entender.
+            Enter Promises: Una promesa es un objeto representando la eventual terminacion o fallo de una operacion asincronica. 
+            Es normalmente cortas pero si, incluso, no es corta en terminos de numero de caracteres, es mas liviano. Normalmente, no esta anidado. 
+            Tenemos que hablar acerca de las bases de Promises: un patron para escribir codigo asincronico.
+            Hay que entender como crear una promise, como se puede crear una funcion que retorna una promise.
+            Y tambien como uno consume o interactua con las promesas que lo hacemos todo el tiempo. Incluso si no estamos escribiendo las promesas nosotros mismso,
+            podemos estar haciendo una consulta desde una libreria o usando una liberia como axiomas. Retorna muchas de estas funciones promesas.
+            Entonces promise es una manera de prometer un valor que probablemente no tengas en el momento.
+            Entonces el objeto que es retornado en el mientras tanto es una promesa y lo que hacemos es que adjuntamos callbacks a ese objeto. No pasamos en callback o un simple callback 
+            a una funcion y anidamos un conjunto de cosas. Una promesa es un objeto retornado donde puedes adjuntar callbacks, en vez de pasar callbacks dentro de una funcion.
+            
+        </p>
+        <h2></h2>
+        <p></p>
+        <h2></h2>
+        <p></p>
         <script src="Anotaciones_Curso_Javascript.js"></script> 
     
     </body>
