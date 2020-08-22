@@ -1,5 +1,6 @@
 body{
   font-family: Arial, sans-serif;
+  background-color: mistyrose;
 }
 
 h1 {
@@ -13,7 +14,7 @@ h1:hover {
   font-size: 40px;
 }
 
-h2{
+h2,h3{
   color: rgb(102, 40, 131);
   padding-left: 20px;
 }
@@ -23,12 +24,32 @@ p{
   color: rgb(100, 100, 100);
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   /*white-space: pre-line;*/
 }
 
-form,ul,button,a{
+pre {
+  overflow: auto;
+  overflow-x: auto;
+  max-width:40%; 
+}
+
+pre {
+  display: block;
+  margin-left: 20px;
+  padding: 20px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  text-align: left;
+  white-space: pre-line;
+  direction:ltr;
+  line-height: 1;
+  color: rgb(228, 227, 227);
+  background-color: #6e7174;
+}
+
+form,ul,button,a, #addItem, #username{
   margin-left: 20px;
 }
 

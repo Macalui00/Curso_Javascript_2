@@ -28,6 +28,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+/*Callback functions*/
 //Para correr codigo una vez que el boton es cliqueado, primeri tenemos que empezar por seleccionarlo:
 var btn = document.querySelector('button'); //Le pasa el string button que seleccionará el boton por mi. 
 

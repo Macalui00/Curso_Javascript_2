@@ -1,3 +1,5 @@
+/*Callback functions*/
+
 //Para correr codigo una vez que el boton es cliqueado, primeri tenemos que empezar por seleccionarlo:
 const btn = document.querySelector('button');
 //Le pasa el string button que seleccionará el boton por mi. 
