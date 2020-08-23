@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+    
+        <title>Anotaciones del Curso Javascript</title>
+
+        <!-- Google Fonts:-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+
+        <!--Estilos:-->
+        <link rel="stylesheet" href="app.css">
+    </head>
+
+    <body>
+        
+        <h1>Anotaciones del curso de Javascript</h1>
+        
+        <h2>Sección 2: JS valores y variables</h2>   
+        <h2>NaN o Not a Number</h2>
+        <p> Hay una cosa importante que hay que saber de los numeros en JavaScript, que es el NaN, que es un valor especial en Javascript. Es un valor especial en Javascript y SE CONSIDERA UN NUMERO. ES UN VALOR NUMERICO QUE REPRESENTA ALGO QUE NO ES UN NUMERO. Hay diferentes formas en las que tu puedes caer en un NaN, dos casos simples:<br>
+            &nbsp;&nbsp;&nbsp; - 0/0 //NaN<br>
+            &nbsp;&nbsp;&nbsp; - 1 + NaN //NaN<br>
+            Tenes que capitalizarlo correctamente para que se tome como el valor Not a Number. Tenemos otros dos valores que son: Infinity, que se genera haciendo algo como 1/0. Javascript solo tiene una manera de representar un valor de infinidad. No hay manera de almacenarlo como un numero que uno pueda ver. Por lo que tenemos un valor especial llamado
+            Infinity. Hay tambien un -Infinity (infinito negativo): -1/0.Tambien tenemos 0 y -0. NaN no necesariamente significa que algo anda mal. A veces podes estar codeando algo que espera un NaN o que puede ser una posibilidad. Por lo que, no es necesariamente un error pero significa que esto no es un estandar matematico o que javascript va a tener una complicacion, representando este numero o este valor como un verdadero valor numerico.  
+        </p>
+        <h2>Variables y Let</h2>
+        <p> Variables son como frascos etiquetados para valores en JavaScript. Podemos almacenar un valor y darle un nombre, entonces, podemos:<br>
+            &nbsp;&nbsp;&nbsp; - volver a llamarlos<br>
+            &nbsp;&nbsp;&nbsp; - usarlos<br>
+            &nbsp;&nbsp;&nbsp; - o cambiarlos luego.<br>
+            La sintaxis basica que veremos primero es usar la palabra clave llamada Let:<br>
+            &nbsp;&nbsp;&nbsp; let algunNombre = valor;<br>
+            De hecho, hay dos manerad diferentes en las que podemos crear variables en JavaScript:<br>
+            &nbsp;&nbsp;&nbsp; - let: en cualquier punto del código puedo volver a llamarla.<br>
+            &nbsp;&nbsp;&nbsp; - const<br>
+            Unas cosas que debes saber de las variables:<br>
+            &nbsp;&nbsp;&nbsp; - Puedes llamarlas practicamente de cualquier manera, ejemplo:<br>
+            &nbsp;&nbsp;&nbsp; let let = 10; Javascript estara muy confundido porque let es una palabra reservada, es una palabra clave en el lenguaje de JavaScript, por lo que javascript piens que estamos intentando hacer otra variable ahi y como se puede ver, si prueba esa sentencia
+            &nbsp;&nbsp;&nbsp; estará desabilitado. Otro ejemplo de esto es la palabra document, que es un objeto en javascript, por lo que si uno intenta hacer una variable con ese nombre, no te dejará.<br>
+            <br>
+            Camelcase: Cuando tengo mas de una palabra en el nombre de la variable, se capitalizan las primeras letras de las palabras, excepto de la primera palabra.<br>
+            <br>
+            Si intentas redeclarar una variable que ya has hecho, no te va a dejar.
+        </p>
+        <h2>Const: constantes</h2>
+        <p> const nombreVar = valor;<br>
+            Hay una gran diferencia con let, no podes cambiar el valor de la variable.
+        </p>
+
+        <h2>Seccion 5: Captura Collecciones de Datos con Arrays</h2>
+        <h2>Algunos metodos de arrays interesantes</h2>
+        <p> Estos son:<br>
+            &nbsp;&nbsp;&nbsp;- Concat: para concatenar arrays<br>
+            &nbsp;&nbsp;&nbsp;- Includes: buscar un valor dentro del arrays<br>
+            &nbsp;&nbsp;&nbsp;- IndexOF: igual que el str.indexOf. para saber cual es su index?<br>
+            &nbsp;&nbsp;&nbsp;- Join: crear un string a partir de un array.<br>
+            &nbsp;&nbsp;&nbsp;- Reverse: crea un array inverso al que tenias.<br>
+            &nbsp;&nbsp;&nbsp;- Slice: copia una porcion del array. <br>
+            &nbsp;&nbsp;&nbsp;- Splice: remueve o reemplaza elementos. <br>
+            &nbsp;&nbsp;&nbsp;- Sort: ordena un array. <br>
+        </p>
+        <h2>Nested Arrays</h2>
+        <p> Tener arrays dentro de arrays. Un ejemplo del uso de esto, puede ser un tateti:<br>
+            const board = [['0',null, '0'],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[null,'X', '0'],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['X', '0', null]]<br>
+        </p>
+        <h2>Scope y Function Scope</h2>
+        <p> Es como la visibilidad de una variable: el lugar donde una variable es definida indica en donde se puede acceder a esa variable. Hay multiples piezas/formas de como se comporta el scope en JavaScript. El primer tipo de Scope es el Function Scope: me indica que las variables dentro de la funcion, solo pueden ser accedidas dentro de esa misma funcion. No puedo acceder a una variable que esta
+            dentro de esa funcion. Esto entre otras cosa me permite, porder tener varias variables llamadas de la misma manera dentro de funciones diferentes, e incluso tener una variable dentro de la funcion y otra fuera de cualquier funcion y que se llamen igual.
+        </p>
+        <h2>Scope y Block Scope</h2>
+        <p> Otro tipo de Scope, que se llama Block Scope, y no necesariamente tiene que ver con funciones, o, al menos no directamente, pero se ha mencionado al principio de la seccion, cubriremos alguna funcion adjyacente contenida. Veamos un ejemplo:</p>
+            <code><pre id = "pre">if (true){
+            &nbsp;&nbsp;&nbsp;let animal = 'eel';
+            }
+            console.log(animal);</pre></code> 
+        <p>
+            Nos dará error porque la variable animal esta dentro del bloque condicional if. Los bloques en javascript estan delimitados por {}. Hay que tener en cuenta que esto es muy diferente a lo que sería un objeto literal o object literal que es tambien entre {}:
+        </p>
+            <code><pre id = "pre">{
+            &nbsp;&nbsp;&nbsp; a: 1,
+            &nbsp;&nbsp;&nbsp; b: 2,
+            &nbsp;&nbsp;&nbsp; c: b
+            }</pre></code>
+        <p>    
+            esto de arriba es un objeto, lo del bloque if si es realmente un bloque. Lo mismo irá si tenemos ejemplo, un while loop, for loop. De manera que:
+        </p>
+            <code><pre id = "pre">if (true){
+            &nbsp;&nbsp;&nbsp; let animal = 'eel';
+            &nbsp;&nbsp;&nbsp; console.lo(animal); //Acá si tengo acceso a la variable.
+            }
+            console.log(animal); //Acá no tengo acceso a la variable.</pre></code>
+        <p>   
+            Esto mismo ocurrirá si uso const en vez de let:
+        </p>
+            <code><pre id = "pre">if (true){
+            &nbsp;&nbsp;&nbsp; const animal = 'eel';
+            &nbsp;&nbsp;&nbsp; console.lo(animal); //Acá si tengo acceso a la variable.
+            }
+            console.log(animal); //Acá no tengo acceso a la variable</pre></code>
+        <p>
+            Pero que ocurrirá si utilizo var en vez de const y let?:
+        </p>
+            <code><pre id = "pre">if (true){
+            &nbsp;&nbsp;&nbsp; var animal = 'eel';
+            &nbsp;&nbsp;&nbsp; console.lo(animal); //Acá si tengo acceso a la variable.
+            }
+            console.log(animal); //Acá también tengo acceso a la variable.</pre></code>
+        <p>
+            Esto nos indica que let y const tienen un reglas de scoping diferentes a var. No hay block scope para var. Esto puede llegar
+            a ser problematico y es diferente a como otros lenguajes de programacion funcionan, esto es porqeu let y const son propuestos
+            a parte de otras razones. Hay otras distinciones entre el const y el let pero tambien por razones de scoping, y es por esto que puede llegar a ser
+            problematico. Entonces, porque puede llegar a ser problematico tener declarada una variable en el bloque y tener acceso a ella afuera?
+            Hay multiples razones, pero para ilustrar un simple problema con el que solemos encontrarnos: 
+        </p>    
+            <code><pre id = "pre">var i = 10;
+            let animal = ['grizzly bear', 'panda bear', 'spectacled bear']
+            for(var i = 0; i < animals.length; i++){
+            &nbsp;&nbsp;&nbsp; console.log(i, animals[i])
+            }</pre></code>
+        <p>
+            Y aquí esta el problema, si imprimo por pantalla, fuera del loop i, sigue existiendo:
+        </p>    
+            <code><pre id = "pre">console.log(i);</pre></code>
+        <p>
+            Entonces, seguimos teniendo acceso al i, y esto puede llegar a ser problematico, si por ejemplo, fuera del loop tuviera otra variable llamada i, por lo que el loop me puede cambiar el valor de la variable i de fuera del loop.
+
+            En cambio, si hago esto con let:
+        </p>
+            <code><pre id = "pre">var i = 10; //podemos usar tambien let en este caso.
+            let animal = ['grizzly bear', 'panda bear', 'spectacled bear']
+            for(let i = 0; i < animals.length; i++){
+            &nbsp;&nbsp;&nbsp; console.log(i, animals[i])
+            }
+
+            console.log(i); //el i que me retornará es el 10</pre></code>
+        <p>
+            si dos variables existen en diferentes scopes no van a interferir entre ellas ni van a generar conflictos. Con let y const no podemos el mismo identificador de variabe dos veces, con var si.
+
+            Una funcion que tambien incluye un bloque en el:
+        </p>
+            <code><pre id = "pre">function dobleArray(arr){
+             const resultado = [];
+             for (let num of arr){
+             &nbsp;&nbsp;&nbsp; let doble = num * 2;
+             &nbsp;&nbsp;&nbsp; resultado.push(doble);
+             }
+             console.log(doble); //No tenemos acceso a la variable doble.
+             return resultado; //podemos retornar el resultado porque la variable fue definida por fuera del bloque.
+            }</pre></code>
+        
+        <h2>Scope y Lexical Scope</h2>
+        <p> Cuando tenemos nested functions que es algo que a veces hacemos. Si utiliza cosas como react, utilizará muy seguido nested functions (funciones dentro de otras). </p>
+            <code><pre id = "pre">function outer(){ //no tengo acceso al afuera de esta funcion
+            &nbsp;&nbsp;&nbsp; let hero = "Black Panther";
+
+            &nbsp;&nbsp;&nbsp; function inner(){ //pero si estoy en una funcion interna del nested sigo teniendo acceso al hero:
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;let cryForHelp = '${hero}, please save me!'
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;console.log(cryForHelp);
+            &nbsp;&nbsp;&nbsp; }
+            }
+
+            function outer(){ //no tengo acceso al afuera de esta funcion
+            &nbsp;&nbsp;&nbsp; let movie = "Black Panther";
+
+            &nbsp;&nbsp;&nbsp; function inner(){ //pero si estoy en una funcion interna del nested sigo teniendo acceso al hero:
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; console.log(movie.toUpperCase());
+            &nbsp;&nbsp;&nbsp; }
+            &nbsp;&nbsp;&nbsp; //Si declaro inner dentro de la funcion outer
+            &nbsp;&nbsp;&nbsp; inner();
+            }</pre></code>
+
+        <p> Pero que pasa si llamo la funcion inner por afuera de la funcion outer: No tengo acceso a ella. Por ende, a la funcion inner tengo acceso solo dentro de la funcion outer pero no fuera de ella. Entonces, lexical scope se refiere al hecho de que nested functions la funcion outer y la funcion inner estan muy conectadas.
+        </p>  
+            <code><pre id = "pre">function outer(){ //no tengo acceso al afuera de esta funcion
+            &nbsp;&nbsp;&nbsp; let movie = "Black Panther";
+
+            &nbsp;&nbsp;&nbsp; function inner(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let movie = "The Shining"
+            &nbsp;&nbsp;&nbsp; console.log(movie.toUpperCase()); //THE SHINING
+            &nbsp;&nbsp;&nbsp; }
+                
+            &nbsp;&nbsp;&nbsp; inner();
+            }</pre></code>
+
+        <h2>Expresiones de Funciones</h2>
+        <p>
+            Una forma de escribir las funciones:
+        </p>
+        <code><pre id = "pre">function nombreFuncion(Parámetros){
+            &nbsp;&nbsp;&nbsp; //return algo; //Puede o no retornar algo.
+            }</pre></code>
+
+            Pero vamos a ver una sintaxis completamente diferente: Se ve bastante similar pero es completamente diferente, que se llama function expression. Empiezan con una variable, la funcion en si no tiene un nombre, y la almaceno en la variable. Puedo almacenar funciones en variables porque LAS FUNCIONES SON OBJETOS EN JAVASCRIPT. Para llamarla, referencio el nombre de la variable y le paso el argumento de la funcion. Ejemplo:
+
+            <code><pre id = "pre">const square = function (num){
+            &nbsp;&nbsp;&nbsp; return num * num;
+            }
+            square(7); //49</pre></code>
+        <p> Veamos otro ejemplo:
+        </p>
+        <code><pre id = "pre">function add(x,y){
+            &nbsp;&nbsp;&nbsp; return x + y;
+            }</pre></code>
+
+        <p>    La funcion ANONIMA equivalente es la siguiente, que tiene el inconveniente de que asi escrita tal cual, no tengo manera de llamarla.
+        </p>
+        <code><pre id = "pre">function (x, y){
+            &nbsp;&nbsp;&nbsp; return x + y;
+            }</pre></code>
+
+        <p> Por lo que tengo que almacenarla en algun lado, o la uso en funciones que tienen funciones como parametros o funciones que retornan funciones. 
+        </p>
+        <code><pre id = "pre">const sum = function (x,y){
+            &nbsp;&nbsp;&nbsp; return x+y;
+            }</pre></code>
+
+        <p> Podemos inspeccionarlas:</p>
+        <code><pre id = "pre">console.dir(sum)
+            console.dir(add)</pre></code>
+
+        <p> la siguiente sigue siendo una function expression pero se trata de named function expression y la otra era una anonimous function expression.</p>
+        <code><pre id = "pre">const product = function multiply(x,y){
+            &nbsp;&nbsp;&nbsp; return x*y;
+            }</pre></code>
+
+        <p> si llamo:</p>
+        <code><pre id = "pre">product(3,5) //funciona</pre></code>
+            
+        <p> pero si llamo:</p>
+        <code><pre id = "pre">multiply(3,5) //no funciona.</pre></code> 
+
+        <h2>Funciones de orden superior</h2>
+        <p>
+            No solo podemos almacenar funciones en variables, sino tambien en arrays.</p> 
+        <code><pre id = "pre">function add(x,y){
+            &nbsp;&nbsp;&nbsp; return x + y;
+            }
+
+            const subtract = function(x,y){
+            &nbsp;&nbsp;&nbsp; return x - y;
+            }
+
+            function multiply(x,y){
+            &nbsp;&nbsp;&nbsp; return x * y;
+            }
+
+            const divide = function (x,y){
+            &nbsp;&nbsp;&nbsp; return x / y;
+            }
+
+            const operations = [add, substract, multiply, divide];</pre></code>
+        <p>
+            en consola:</p>
+        <code><pre id = "pre">operations[1]
+
+            operations[1](100,4)
+            operations[2](100,4)
+
+            for (let func of operations){
+            &nbsp;&nbsp;&nbsp; let result = func(30,5);
+            &nbsp;&nbsp;&nbsp; console.log(result);
+            }
+
+            Tambien lo podemos almacenar en un objeto:
+            const thing = {
+            &nbsp;&nbsp;&nbsp; doSomething: multiply
+            }
+
+            thing.doSomething(50,2);</pre></code>
+        
+
+        <h2>Callbacks functions </h2>
+        <p> 
+            Son funciones pasadas en otras funciones como argumentos, que es luego invocada dentro de la outer function.</p>
+        <code><pre id = "pre">function callTwice(func){
+            &nbsp;&nbsp;&nbsp; func();
+            &nbsp;&nbsp;&nbsp; func();
+            }
+            function laugh(){
+            &nbsp;&nbsp;&nbsp; console.log("HAHAHAHAHAHAHAHAHAHA");
+            }
+            callTwice(laugh) //Pasando la funcion como argumento, esta funcion pasada como argumento es a lo que llamamos callback function</pre></code>
+        
+        <p> Estas funciones son extremadamente comunes en javascript. En javascript hay un metodo llamado setTimeout() el cual se ejecutara un determinado bloque de código o una funcion de codigo despues de un determinado numero de milisegundos o segundos que nosotros le pasemos en numeros de milisegundos como: 5000.. Pero,
+            el primer elemento que le debemos pasar es una funcion, una funcion para correr y despues cuanto tiempo hay que esperar antes de que se ejecute:</p>
+        <code><pre id = "pre">setTimeout(func, 5000);</pre></code>
+
+        <p> Vamos a definir una funcion:</p>
+            function grumpus(){
+            &nbsp;&nbsp;&nbsp; alert("GAAH GO AWAY!");
+            }
+            setTimeout(grumpus, 5000);
+
+        <p> Podemos usar el setTimeout con una funcion anonima:</p>
+        <code><pre id = "pre">setTimeout(function(){ //Lo hago de esta manera porque no es una funcion que quiera reutilizar.
+            &nbsp;&nbsp;&nbsp; alert("Welcome!");
+            }, 5000);</pre></code>
+
+        <p> Vamos a agregar un boton a la pantalla:
+        </p>
+
+        <button>Don't click me!</button>
+        <p> 
+            El script de javascript hay que colocarlo siepre abajo de esto para poder funcionar.
+        </p>
+
+        <h2>Hoisting</h2>
+        <p>Que pasa si hago:</p>
+        <code><pre id = "pre">var animal = 'Tapir';
+            console.log(animal);</pre></code>
+
+        <p> Pero ahora que pasa si invierto el orden:</p>
+        <code><pre id = "pre">console.log(animal); //Obtengo undefined
+            var animal = 'Tapir';</pre></code>
+
+        <p> Esto era lo que esperaba o quizas no esperaba que sucediera pero que pasa si hago lo siguiente:</p>
+        <code><pre id = "pre">console.log(animal); //No existe. ERROR! ANIMAL NO ESTA DECLARADO. 
+            //var animal = 'Tapir';</pre></code>
+
+        <p> ESTE COMPORTAMIENTO EXTRAÑO ES HOISTING:</p>
+        <code><pre id = "pre">console.log(animal); 
+            var animal = 'Tapir';</pre></code>
+        <p> javascript lee este codigo y lo que hace es reorganizar el codigo:</p>
+
+        <code><pre id = "pre">var animal;
+            console.log(animal);
+            animal = 'Tapir';
+            console.log(animal);</pre></code>
+
+        <p> Entonces esto es con var, ahora comparemos con let y const:</p>
+        <code><pre id = "pre">let shrimp = "Harlequin shrimp";
+            console.log(shrimp);</pre></code>
+
+        <p> Ahora que pasa si invertimos el orden:</p>
+        <code><pre id = "pre">console.log(shrimp); //Error de referencia, no podemos acceder a shrimp antes de su inicializacion.
+            let shrimp = "Harlequin shrimp";</pre></code>
+
+        <p> Entonces las declaraciones de variables con let no tienen hoisting como si lo tienen las declaraciones con var. Y esa es una de las razones por las que usamos let. 
+
+            Y haciendo lo mismo con const:</p>
+        <code><pre id = "pre">console.log(shrimp); //Error de referencia, no podemos acceder a shrimp antes de su inicializacion.
+            let shrimp = "Harlequin shrimp";
+            obtengo el mismo resultado.</pre></code>
+
+        <p> Ahora en el caso de funciones:</p>
+
+        <code><pre id = "pre">function aullar(){
+            &nbsp;&nbsp;&nbsp; console.log("AUUUUUU");
+            }
+            aullar(); //Funciona</pre></code>
+
+        <p> Y si invierto el orden:</p>
+        <code><pre id = "pre">aullar(); //Funciona igual 
+            function aullar(){
+            &nbsp;&nbsp;&nbsp; console.log("AUUUUUU");
+            }</pre></code>
+
+        <p> Esto funciona AL MENOS PARA LAS DECLARACIONES DE FUNCIONES.
+
+            Pero, en caso de EXPRESIONES DE FUNCIONES:</p>
+        <code><pre id = "pre">var hoot = function (){
+            &nbsp;&nbsp;&nbsp; console.log("iuujuuuu")
+            }
+            hoot(); //Funciona
+
+            hoot(); //No funciona
+            var hoot = function (){
+            &nbsp;&nbsp;&nbsp; console.log("iuujuuuu")
+            }</pre></code>
+            
+        <p>El tema con este ultimo caso es que la variable existe, pero no sabe el valor:</p>
+        <code><pre id = "pre">console.log(hoot); //undefined
+            var hoot = function (){
+            &nbsp;&nbsp;&nbsp;console.log("iuujuuuu")
+            }</pre></code>
+        <p>Entonces si trato de ejecutar hoot() esta tratando de llamar a un undefined.
+
+            En el caso de let, tengo un error diferente:</p>
+        <code><pre id = "pre">hoot();
+            var hoot = function (){
+            &nbsp;&nbsp;&nbsp; console.log("iuujuuuu")
+            }</pre></code>
+        <h2>Seccion 10: Aplicar funciones para la coleccion de datos</h2>
+        <h2>ForEach</h2>
+
+        <p> Acepta una funcion callback. Llama a la funcion una vez por elemento en el array.
+            Es un metodo del array:</p>
+
+        <code><pre id = "pre">const nums = [9,8,7,6,5,4,3,2,1];
+
+            nums.forEach(function (n){
+            &nbsp;&nbsp;&nbsp; console.log(n*n) //Muestra cada elemento del array elevado a la 2
+            });
+
+            nums.forEach(function (el){
+            &nbsp;&nbsp;&nbsp; if (el % 2 ===){ //Muestra solo los elementos pares
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; console.log(el)
+            &nbsp;&nbsp;&nbsp; }
+            });
+
+            function printTriple(n){
+            &nbsp;&nbsp;&nbsp; console.log(n*3);
+            }
+
+            //Usando una funcion predefinida:
+            nums.forEach(printTriple);
+
+            //Usando el index:
+            nums.forEach(function (num, idx) {
+            &nbsp;&nbsp;&nbsp; console.log(idx, num);
+            });
+
+            //realizando un caso más complejo donde utilizamos un array de objetos:
+            const books = [{
+                title: 'Good Omens',
+                authors: ['Terry Pratchett', 'Neil Gaiman'],
+                rating: 4.25
+            },
+            {
+                title: 'Bone: The Complete Edition',
+                authors: ['Jeff Smith'],
+                rating: 4.42
+            },
+            {
+                title: 'American Gods',
+                authors: ['Neil Gaiman'],
+                rating: 4.11
+            },
+            {
+                title: 'A Gentleman in Moscow',
+                authors: ['Amor Towles'],
+                rating: 4.36
+            }
+            ]</pre></code>
+
+        <p> Supongamos que quiero imprimir el titulo de cada libro:</p>
+        <code><pre id = "pre">books.forEach(function(book){
+            &nbsp;&nbsp;&nbsp; console.log(book.title.toUpperCase());
+            });</pre></code>
+
+        <p> Puedo hacer exactamente lo mismo con un for:</p>
+        <code><pre id = "pre">for(let book of books){
+            &nbsp;&nbsp;&nbsp; console.log(book.title.toUpperCase());
+            }</pre></code>
+
+        <p> Son diferentes mas alla de su sintaxis, porque el primero tiene una funcion y el segundo es simplemente un bloque. 
+
+            Un for loop regular:</p>
+        <code><pre id = "pre">for(let i = 0; i (menor) books.length; i++){
+            &nbsp;&nbsp;&nbsp; console.log(books[i].title.toUpperCase());
+            }</pre></code>
+
+        <p> Pero obviamente la mejor manera es la del forEach, ya que me olvido de los index.</p>
+
+            Hay otra cosa más que hay que saber del forEach. Tambien podemos agregar un segundo parametro a nuestro callback si queremos usar el index.</p>
+        <code><pre id = "pre">numbers.forEach(function(num, idx){
+            &nbsp;&nbsp;&nbsp; console.log(idx, num);
+            });</pre></code>
+
+        <h2>Map</h2>
+
+        <p>
+            Crea un nuevo array con los resultado de llamar un callback a cada elemento de un array. </p>
+        <code><pre id = "pre">const texts = ['guau', 'mmm', 'ooh', 'grr'];
+            const caps = text.map(function(t){
+            &nbsp;&nbsp;&nbsp; return t.toUpperCase();
+            });
+            texts;
+            caps;</pre></code>
+        
+
+        <h2> Arrow functions</h2>
+        <p> Alternatuva sintacticamente compacta a una expresion de funcion regular. Internet explorer no tiene soporte a las mismas. Es otra forma de escribir funciones: Arrow functions no fueron introducidas porque son mas compactas o simples, hay otra diferencia, de como se comportan. 
+            <br>
+            2 reglas cuando escribis arrow functions:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Parentesis son opcionales si hay solo un parametro:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; const square = x => {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return x * x;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Usar parentesis vacios para funciones sin parametros:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const singASong = () => {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "LA LA LA LA LA";<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        </p>
+
+        <h2>Arrow functions: Implicit returns</h2>
+        <p> Implicit returns: Solo funcionan en ciertos escenarios. Agregar un implicit return a una funcion significa que no tienes que escribir la palabra return. Y en algunos escesarios puedes escribir una linea de arrow function. 
+        </p>
+
+        <h2>Find</h2>
+        <p>Otro de los metodos del array que espera un callback. Retorna el valor de el primer elemento en un array que satisface la funcion testeadora provista:
+        </p>
+        <code><pre id = "pre">let movies = {
+            &nbsp;&nbsp;&nbsp;"The Fantastic Four",
+            &nbsp;&nbsp;&nbsp;"The Avengers",
+            &nbsp;&nbsp;&nbsp;"Dr. Strange",
+            &nbsp;&nbsp;&nbsp;"Captain America"
+            }
+
+            let movie = movies.find(movie => {
+            &nbsp;&nbsp;&nbsp;return movie.includes("Dr.")
+            });
+
+            let movie2 = movies.find(m => m.indexOf("The") === 0);</pre></code>
+        <p>
+            La funcion que le pasamos es necesario que retorne verdadero o falso. SOLO RETORNA UN VALOR, INCLUSO SI HAY 10 MATCHEOS, SOLO RETORNARÁ EL PRIMER MATCH. 
+        </p>
+
+        <h2>Filter</h2>
+        <p> Esta es otro metodo de los arrays que espera que le pases un callback.<br>
+            Crea un nuevo array con todos los elementos que pasan el testeo implementado por
+            la funcion provista.</p>
+
+        <code><pre id = "pre">const nums3 = [9,8,7,6,5,4,3,2,1];
+            const odds = nums3.filter(n => {
+            &nbsp;&nbsp;&nbsp; return n % 2 === 1; //Nuestra funcion callback retorna verdadero o falso 
+            });
+
+            const smallNums = nums.filter(n => n (menor) 5);</pre></code>
+
+        <h2>Every y Some</h2>
+        <p> Ambos metodos son metodos booleanos.<br>
+            
+            Every testea todos los elementos en un array que pasen la funcion provista.<br>
+            Retorna un valor booleano.</p>
+
+        <code><pre id = "pre">const words = ["dog", "pig", "log", "bag", "wag"];
+
+            words.every(word =>{
+                return word.length === 3; //Si todas las palabras tienen 3 letras: true
+            })
+
+            words.every(word => word[0] === 'd'); //Si cada palabra empieza con una "d": retorna false
+
+            words.every(w => {
+                let last_letter = w[w.length - 1]; 
+                return last_letter === "g"; //Si cada palabra termina con una "g": true
+            });</pre></code>
+
+        <p> Osea lo que hace es que analiza cada elemento del array con la funcion 
+            y si todo el array da true, every retorna true sino retorna false.<br>
+
+            Sirve para verificar si todos los elementos del array cumplen con una condicion.<br>
+
+            Some: similar a every pero retorna verdader si cualquiera de los elementos del array pasa
+            la funcion tester.</p>
+
+        <code><pre id = "pre">const words = ["dog", "jello", "log", "cupcake", "bag", "wag"];
+            
+            words.some(word => {
+                return word.length > 4;
+            })
+
+            words.some(word => word[0] === "Z");
+
+            words.some(w => w.includes("cake"));</pre></code>
+        
+        <h2>Sort</h2>
+        <p> Funciona de una manera un poco extraña, porque si tenemos un array de numeros con decimales:
+            no me los ordena correctamente.</p>
+
+        <code><pre id = "pre">const precios = [500.00, 450.50, 34.00, 12.99, 55.90];
+            console.log(precios.sort);</pre></code>
+        
+
+        <h2>Reduce</h2>
+        <p> Lo que hace es tomar cada elemento del array y en base a eso retorna un solo valor. 
+            Por ahi los ejemplos mas claros serian el de sumar, restar o multiplicar, pero no necesariamente,
+            son los usos que se le de en la vida real, por ejemplo, buscar el numero maximo dentro del array.<br>
+
+            Entoces reduce es un metodo de array donde nosotros le pasamos una funcion callback y esa funcion callback, necesita seguir
+            un formato particular. Este formato es el siguiente:<br>
+            Un callback con al menos dos parametros. La documentacion llama primero al primer parametro:</p>
+            
+        <code><pre id = "pre">[3,5,7,9,11].reduce((accumulator, currentValue) => {
+                return accumulator + currentValue; //accumulator representa el acumulador y el current value representa cada elemento individual en el array
+            });</pre></code>
+
+        <p> No importa los nombres que les pongas, pero el primero de ellos se encargara de acumular el total o el valor acumulado, y el segundo parametro almacena el valor individual del elemento del array.<br>
+
+            Cuando usamos reduce podemos tambien pasar un valor inicial con el cual empezar.</p>
+        <code><pre id = "pre">arr.reduce(callback, initialValue)</pre></code>
+
+        <p> Ahora vamos a ver una manera completamente diferente de usar reduce donde podemos contar los resultados desde un array, podemos agrupar diferentes valores en un array usando un objeto. 
+        </p>
+        <h2>Seccion 11</h2>
+        <h2>Default Parameters</h2>
+        <p> En el pasado se podía poner un default parameter en una funcion, en caso de que por ejemplo, si una funcion tiene dos parametros e ingresas uno solo, te siga retornando algun valor.
+            Ejemplo:</p>
+        <code><pre id = "pre">function multiply (x,y){
+                return x*y;
+            })</pre></code>
+        <p> si ingreso por consola:</p>
+        <code><pre id = "pre">multiply(5))</pre></code>
+        <p> me retorna NaN</p>
+        <p> para que podamos asignarle un valor de default, antes, manualmente tenias que hacer lo siguiente:</p>
+        <code><pre id = "pre">function multiply(x, y){
+                if (typeof y === "undefined"){
+                    y = 1;
+                }
+                return x*y;
+            })</pre></code>
+
+
+        <p> Hay una manera más corta de hacer esto:</p>
+            
+        <code><pre id = "pre">function multiply(x, y){
+                y = typeof y === "undefined" ? 1 : y;
+                return x*y;
+            }</pre></code>
+        <p> Esta fue una manera pero no es muy amigable. 
+            Hay una manera mucho mejor, gracias a la nueva manera de sintaxis de default parameters.</p> 
+
+        <code><pre id = "pre">function multiply (a, b = 1){
+                return a * b;
+            }</pre></code>
+
+        <p> Algo que es absolutamente importante es que el orden de los parametros si realmente importa.</p> 
+        <code><pre id = "pre">const greet2 = (person, greeting = 'hi', punctuation = '!') =>{
+                console.log(`${greeting}, ${person}${punctuation}`);
+            }</pre></code>
+            
+        <p> Esto funcionara si pongo los tres parametros pero no funcionara si pongo por ejemplo:</p> 
+        <code><pre id = "pre">greet2("maria", "?")</pre></code>
+
+        <p> Otra cosa que no puedo hacer es ponerle un valor de default al primer parametro y no al segundo: me retornara NaN en el caso de multiply. 
+        </p>
+
+        <h2>Spread</h2>
+        <p> Todo lo de esta seccion no tiene soporte en internet explorer.
+            Spread syntax permite un iterable como un array de ser expandido en lugares donde cero o más argumentos (de llamada de funciones) o elementos (de array literals) son esperados,
+            o una expresion objeto de ser expandido en lugares donde cero o más pares de valores clave (de objetos literales) son esperados.<br>
+            Hay tres escenarios:<br>
+                - Spread en una llamada de funcion<br>
+                - Spread en un array literal<br>
+                - Spread en un objeto literal<br>
+            Y todos tienen que ver con expandir algun ignorable dentro de algun otro lugar, algun otro destino.<br>
+            
+            Lo primero que veremos es spread en una llamada de funcion:<br>
+            Expande un iterable (array, string, etc.) dentro de una lista de argumentos.<br>
+            Ejemplo:</p>
+
+        <code><pre id = "pre">nums = [9,3,2,8];
+            Math.max(nums); //NaN</pre></code>
+
+        <p> usando spread:</p>
+        <code><pre id = "pre">Math.max(...nums); //9
+            //Seria lo mismo que llamar:
+            //Math.max(9,3,2,8)</pre></code>
+
+        <p> Entonces, spread sintacticamente es siempre tres puntos suspensivos (...) cuando
+            estamos usando una llamada de funcion, en un array literals y en un objeto literals.<br>
+
+            Cuando se usa dentro del parentesis en una llamada de funcion tomará eso y lo rompera
+            en argumentos individuales en vez de pasarlo como un solo argumento.</p>
+
+        <code><pre id = "pre">caso array literals:
+            const num1 = [1,2,3];
+            const num2 = [4,5,6];
+
+            [...nums1, ...nums2];
+            //[1,2,3,4,5,6]
+
+            ["a", "b", ... nums2];
+            //["a", "b", 4, 5, 6]
+
+            [...nums1, ...nums2, 7, 8, 9];
+            //[1,2,3,4,5,6,7,8,9]</pre></code>
+
+        <p> Crea un nuevo array usando un array existente. Expande los elementos desde un array en un nuevo array. 
+            De hecho, uno de los usos mas comunes del spread es hacer una copia de un array:</p>
+            <code><pre id = "pre">const nums1Copia = [...nums1]</pre></code>
+
+        <p> Podemos hacer algo interesante con los strings:</p>
+        <code><pre id = "pre">"abcdefg".split("") //["a","b", "c", "d","e","f", "g"]
+
+            [..."abcdefg"] //obtenemos lo mismo:["a","b", "c", "d","e","f", "g"]</pre></code>
+
+        <p> Caso objetos literals:</p>
+
+        <code><pre id = "pre">const feline = {legs: 4, family: "Felidae"};
+            const canine = {legs: 4, family: "Caninae", furry: true};
+
+            const dog = { ...canine, isPet: true};
+            //{legs: 4, family: "Caninae", furry: true, isPet: true}
+
+            const lion = { ...feline, genus: "Panthera"};
+            // {legs: 4, family: "Felidae", genus: "Panthera"}
+
+            const catDog = {...feline, ...canine};</pre></code>
+
+        <p> Copia propiedades desde un objeto en otro objeto literal.<br> 
+            Entonces en efecto, podemos crear copias de objetos o podemos crear combinaciones de objetos, podemos ponerlos juntos...<br>
+
+            Que pasa cuando tenemos caracteristicas conflictivas, ejemplo dos objetos tienen legs: 4?<br>
+            Se sobrescriben una sobre otra, por lo que nos queda una sola propiedad de legs.<br>
+            Pero imaginemos que tenemos un objeto que en vez de 4 patas tiene 3:</p>
+
+            <code><pre id = "pre">const tripod = {
+                ...canine,
+                legs: 3
+            }
+            //setea las piernas en 3, la razon es que el orden importa, entonces, nosotros copiamos las propiedades de camino primero, 
+            //y despues de esto legs es actualizado a 3. 
+            //pero si hago lo siguiente:
+
+            const tripod = {
+                ...canine,
+                legs: 3,
+                ...canine
+            }//Se setea de nuevo legs a 4</pre></code>
+
+        <p> Tambien podemos clonar un objeto, por lo que no tendremos la misma referencia.</p>
+
+        <code><pre id = "pre">const catDogClone = {
+                ...catDog
+            }
+
+            catDogClone === catDog //false</pre></code> 
+
+        <p> Solamente en este contexto podemos expandir objetos.</p> 
+
+        <code><pre id = "pre">{...[4,5,6]}
+            {0: 4, 1: 5, 2:6}</pre></code>
+
+        <h2>The arguments object (not new)</h2>
+        <p> Parece similar al spread, pero en realidad, es lo opuesto. Lo que hace es que en vez de separar los datos en argumentos diferentes
+            o en nuevos objetos o arrays, en realidad, junta cosas dentro de un solo array. Entonces, es usado cuando queremos hacer funciones
+            que aceptan un numero ilimitado de argumentos o un numero de argumentos variables. Ejemplo:<br>
+            Math.max(), podemos pasarle la cantidad de argumentos que queramos. Entonces, como podemos escribir esto?
+            Como podemos escribir codigo para una funcion así?<br> 
+
+            Hay otra manera de hacer eso sin REST que es los argumentos de objeto.<br>
+            En cada funcion tenemos acceso a algo llamado argumentos, es un nombre especial y es como si luciera como un array pero no lo es. 
+            No necesitamos cosas como push y pop y todos los metodos de array que puedas querer. Pero, es una lista donde tenemos indices y podemos
+            loopear sobre el con un loop for. Esta forma no es genial pero existe. 
+        </p>
+
+        <h2>REST</h2>
+        <p> Se representa con tres puntos suspensivos como spread pero los ponemos dentro de la lista de parametros de la definicion de una funcion
+            y lo que hace es que colecta todos los argumentos o los argumentos restantes dentro de un actual array, no un array como objeto, no una imitacion de un array, un
+            array real.<br> 
+
+            Para escribir la funcion suma pero con rest...<br>
+
+            El orden en el que ponemos los parametros importa, no podemos poner la lista de argumentos antes de algun argumento esperado, ni podemos poner dos listas de argumentos rest
+            La otra cosa es que podemos usarlo en un arrow function.
+        </p>
+
+        <h2>Destructuring</h2>
+        <p> Una sintaxis corta y limpia de "unpack":<br>
+                - valores desde arrays<br>
+                - propiedades desde objetos<br>
+            en distintas variables.<br>
+
+            Se utiliza en varias formas distintas, una opcion, que es la que se verá primero es la de descructuring arrays.<br>
+
+            Cuando destructuramos un array, podemos desempacar valores especificos fuera de un array hacia nuevas variables.<br> 
+
+            Podemos utilizar destructuring para "desempacar" valores desde un objeto a variables. Pero la principal diferencia,
+            con el caso de los arrays, es que en los arrays podemos desempacar basados en la posicion del index.<br> 
+            En el caso de los objetos hacemos las variables en base a los nombres de las propiedades.<br> 
+        
+            Nested Destructuring.<br> 
+
+            Hay un lugar mas donde vas a poder ver destructuring que es dentro de una definicion de funcion, donde los parametros estan listados. 
+            Podemos usar la misma destructuring sintaxis pero poniendola dentro de los parentesis de una definicion de funcion que lo que hará 
+            es extraer o desempacar valores de los argumentos pasados.<br>
+        </p>
+        <h2>Seccion 11: Metodos de objetos y la palabra clave "This"</h2>
+        <h2>Shorthand properties</h2>
+        <p> Es algo introducido en 2015 y no presenta soporte en Internet Explorer.<br> 
+            Es una buena y facil manera de crear un objeto literal cuando tiene variables y quieres crear una propiedad donde el key name es el
+            nombre de tu varianle y el valor es el valor en la variable.<br>
+        </p>
+
+        <h2>Computed properties</h2>
+        <p> Es solo una mejor de la sintaxis de los objetos literales donde podemos agregar una propiedad con una clave dinamica.
+        </p>
+
+        <h2>Methods</h2>
+        <p> Podemos agregar funciones como propiedades en objetos.</p>
+            
+            <code><pre id = "pre">const math = {
+                multiply: function (x,y) {
+                    return x*y;
+                },
+                divide: function(x,y) {
+                    return x / y;
+                },
+                square: function(x){
+                    return x*x;
+                }
+            }</pre></code> 
+
+        <p> Una de las primeras razones por las que podemos hacer esto es para agrupar funciones 
+            para agrupar funcionalidad con alguna unidad que brinde un poco de cohesion. 
+
+        </p>
+
+        <h2>Method Shorthand Syntax</h2>
+        <p>Podemos utilizar arrow functions en objetos, aunque no es muy comun por razones que ahora veremos.
+            Pero ademas, hay un nueva y genial shorthand para añadir metodos a un objeto.</p>
+
+            <code><pre id = "pre">const math = {
+                blah: "Hi!",
+                add(x,y){
+                    return x+y;
+                },
+                multiply(x,y){
+                    return x*y;
+                }
+            }
+
+            math.add(5,5); //10</pre></code>
+
+        <p>Ya no tenemos que hacer: la clave dos puntos el valor -> clave: valor 
+        </p>
+
+        <h2>This</h2>
+        <p> El this es muy importante porque nos permite señalar a las propiedades o metodos de un objeto.
+            El valor de this depende de el contexto de invocacion de la funcion en la cual esta siendo usada. 
+            Lo que significa que el valor cambiará dependiendo de como la funcion esta realmente siendo ejecutada,
+            no solo donde lo esccribiste.
+        </p>
+
+        <h2>The Annoyomatic Demo: Arrow functions y This</h2>
+        <p> Para profundizar mas en el tema de arrow functions y el This.<br>
+            
+            ARROW FUNCTION NO TIENEN SU PROPIO THIS, EL THIS EN UN ARROW FUNCTION NUNCA CAMBIO DESDE EL THIS DE SU PADRE O
+            DE SU CERCANO THIS.<br>
+
+            Esto demuestra que a veces es mejor utilizar arrow functions porque no queremos un nuevo this.<br> 
+        </p>
+        <h2>Seccion 13: JS en el Browser - DOM Manipulation</h2>
+        <h2>DOM Manipulation</h2>
+        <p> DOM o Document Object Model es nuestra ventana dentro de HTML y CSS y de la pagina web en general, a traves de Javascript.
+            Podemos cambiar cosas en la página web.<br>
+            
+            El objeto documento es nuestro punto de entrada al mundo del DOM. Contiene representaciones de todo el contenido en una pagina, más tonelada de metodos muy utiles y propiedades.<br>
+            
+            Hay una jerarquia de los objetos de una pagina web.<br>
+        
+            El objeto documento representa la pagina web completa, el documento entero. Todas las otras piezas, objetos del DOM, estan localizadas en algun lugar del documento.
+        </p>
+
+        <h2>Selecting</h2>
+        <p> Nosotros lo que hacemos es seleccionar un elemento o multiples elementos y despues hacemos algo con ellos, osea:<br>
+                1. Seleccionamos<br>
+                2. Manipulamos<br>
+            Hay muchas maneras de seleccionar usando el documento, algunas:<br>
+                - getElementById: Es un metodo del document, asi que lo llamamos de la siguiente manera: document.getElementById. Lo que hace es justamente tomar un ID y buca el elemento que
+                matchea, que contiene o que tiene ese ID en él y retorna ese objeto.</p>
+        <code><pre id = "pre">Document.getElementById() Le paso un id como string
+                const img = document.getElementById("bear-photo"); //retorna un objeto.</pre></code>
+
+        <p>     Una vez que usamos este tipo de getElement, solo si hay un match para ese id, obtenemos un elemento de regreso
+                como un objeto. La representacion DOM para ese elemento.
+                Recordar que se supone que tenemos solo un ID en la pagina, osea que todos los id sean diferentes.
+                Osea que no deberia haber multiples bear-photo, y si las hubiera por alguna razon, seguiriamos obteniendo el primer
+                elemento que matchea. Entonce solo obtenemos un elemento de vuelta y si pasamos un id invalido o algo que no está
+                en la pagina, obtenemos nada, un null.<br>
+
+                Abajo de todo en __proto__: dice que tipo de elemento es.
+                En conclusion, lo que tenemos que saber es que hay diferentes categorias de elemenos en la pagna y algunos de ellos tienen su propio tipo como HTML paragraph.
+                Hay diferentes patrones para estos objetos diferentes.<br>
+
+                - getElementsByTagName: otro tipo de metodo de documento que es un poco diferente al anterior. Seleccionamos por un tipo de elemento: Imagenes, Parrafos, etc.
+                document.getElementsByTagName(): es Elements, con s porque potencialmente podemos obtener mas de un elemento.
+                Esto significa que los elementos obtenidos seran almacenados en una lista.<br>
+
+                Si selecciono algo que no esta en la pagina:</p>
+        <code><pre id = "pre">const h3 = document.getElementsByTagName("h3"); //Obtengo una coleccion vacia</pre></code>
+
+        <p>     Ahora hablemos de que es esta HTMLCollection? Es un array como objeto que no es un array. Es una coleccion de objetos
+                Es un tipo en el DOM. Pero podemos hacer algun array de cosas.<br>
+
+                Podemos usar los indices del array en brackets, con la misma sintaxis:</p>
+        <code><pre id = "pre">inputs[0]
+                inputs.length</pre></code>
+
+        <p>     Pero si intento usar array methods como .pop, .push, .include, no se puede.
+                Entonces lo que podemos hacer es acceder a los elementos con indices e iterar y no mucho mas.</p>
+                
+        <code><pre id = "pre">for(let input of inputs) {console.log(input)}</pre></code>
+
+        <p>     como es iterable, tambien podemos utilizar spread: no es un array pero puedo usar spread para colocarlo dentro del array</p>
+        <code><pre id = "pre">const arr = [...inputs];</pre></code>
+        <p>     - getElementsByClassName: Aca tambien es con s, porque podemos obtener multiples elementos en una lista.<br>
+                
+            Algo mas acerca de todos estos metodos vistos es que no tienes que llamarlos solo en el documento. Cuando tenes un documento con miles de elementos.
+            Si tengo que seleccionar un elemento y despues una busqueda mas dentro de ese elemento, puedo hacer esto...<br>
+
+            Los siguientes elementos los utilizaré para la sección DOM Manipulation:
+        </p>
+
+        <h1 class="header">Este es un header de prueba</h1>
+        
+        <form action="">
+            <input type="text" placeholder="Bear Name">
+            <input type="password" placeholder="password">
+            <input type="checkbox">
+            <input type="range" min="100" max="500"/>
+            <input type="submit">
+        </form>
+        
+        <p class="special"> cjajqsuqcwuiehdswdfjksdncqi</p>
+        
+        <ul>
+            <li class="special">primera linea</li>
+            <li>segunda linea</li>
+            <li class="special">tercera linea</li>
+        </ul>
+        
+        <p id = "main">Este es un parrafo para DOM Manipulation.
+            Como se ve? Dime que se ve. A ver donde estoy.
+        
+            <b style="display: none;">1,2,3,4 probando</b>
+            saafasfgw
+            <script>console.log("HELLO EVERYONE!")</script>
+        </p>
+        
+        <ul id="todos">
+            <li class ="todo">Comprar verduras <button>X</button></li>
+            <li class ="todo">Estudiar para la clase <button>X</button></li>
+            <li class ="todo">Entregar pedido <button>X</button></li>
+        </ul>
+
+        <a href="www.cats.com/cute">Cats are adorable sometimes...</a>
+
+        <img id="bear-photo" src="https://verdeyazul.diarioinformacion.com/wp-content/uploads/2020/07/portada-article-img-20-768x512.jpg" alt = "">
+        
+        <section>
+            <ul>
+                <li>Carrots</li>
+                <li class="special">Peas</li>
+                <li>Broccoli</li>
+            </ul>   
+        </section>
+
+        <h2>QuerySelector</h2>
+        <p> Hay un 4to metodo de seleccion que los gobierna a todos y que es el quertSelector. Es el más nuevo, es un metodo selector de un solo elemento, todo en uno.
+            Puede seleccionar cualquier cosas que usemos, puede replicar la funcionalidad de todos los selectores mencionados anteriormente o en base a cualquier otro
+            criterio. La manera en la que funcion es que pasamos a un selector de estilos css, por lo que, podemos selecionar un ID usando CSS cuando pasamos el simbolo
+            de # y el nombre del id o el . y el nombre de la clase. Podemos seleccionar un elemento escribiendo solo el nombre del elemento exactamente como lo hacemos 
+            en CSS. Podemos seleccionar por atributo.<br>
+            Hay dos versiones del querySelector:<br>
+                -querySelector: este solo retorna un solo elemento como mucho. Recordar que solo retorna el primer match.<br>
+                -querySelectorAll: que hace lo mismo pero retorna una coleccion.<br>
+            Algo para notar es que nos devuelve un nodelist a diferencia de los que nos devuelve un getElemento.<br>
+            Es otro tipo de coleccion. Una diferencia con un html colection es que con el nodelist podemos utilizar el foreach.
+        </p>
+        <h2>Seccion 14</h2>
+        <h2>Trabajando con innerText y textContent</h2> 
+        <p>Accediendo a text desde un elemento. Como obtenemos los contenidos de un elemento.</p>   
+        
+        <h2>InnerHTML</h2> 
+        <p> Va a retornar o retribuir no solo el texto dentro de un elemento sino tambien todos los tags que se encuentren dentro.
+        </p>   
+
+        <h2>Value, src, href y más</h2> 
+        <p>Propiedades que directamente podemos acceder como elementos individuales.</p> 
+
+        <h2>getAttribute y setAttribute</h2> 
+        <p></p>  
+
+        <h2>Encontrando padres/hijos/hermanos</h2> 
+        <p> Hay manera de encontrarlos que serian los siguientes metodos:<br>
+                - parentElement<br>
+                - children<br>
+                - nextSibling: siguiente hermano<br>
+                - previousSibling: hermano previo<br>
+            Estos metodos te permiten acceder a otros elementos basados en el elemento actual con el que estemos trabajando.
+        </p>
+
+        <h2>Cambiando multiples elementos</h2> 
+        <p>Usando el querySelectorAll e iterando el array que nos devuelve podemos cambiar multiples elementos.</p>
+        
+        <h2>Cambiando estilos usando JavaScript</h2> 
+        <p> Hay muchas maneras, en este caso veremos una que es la propiedad style. Entonces, cada elemento que nosotros seleccionamos,
+            tiene su propiedad estilo. </p>
+
+        <h2>getComputedStyle</h2> 
+        <p>Otra manera de acceder a los valores de estilos. Entonces, no setear un valor pero si obtener cual es el valor actual para,
+            por ejemplo, el color, el fondo de pantalla, etc. Realmente no lo podemos hacer usando la propiedad style como vimos. 
+        </p>
+
+        <h2>Manipulando Classes</h2> 
+        <p>Ahora veremos una mejor manera de añadir multiples estilos de una vez.</p>
+
+        <h2>Creando elementos</h2> 
+        <p>Como crear elementos desde scratch e insertarlos o agregarlo al DOM.</p>
+
+        <h2>Append, Prepend e insertBefore</h2> 
+        <p>Otros metodos que podemos utilizar para agregar nuevos elementos al DOM. Y tambien vamos a hablar de remover elementos,
+            como hacemos para detear algo desde el DOM.
+        </p>
+
+        <h2>RemoveChild y Remove</h2> 
+        <p>Para remover elementos de la pagina web.</p>
+        <h2>Seccion 15: Comunicandose con los eventos</h2>
+        <h2>DOM Events</h2> 
+        <p> Hay muchas cosas que podes hacer como:<br>
+                - clicks<br>
+                - drags<br>
+                - drops<br>
+                - hovers<br>
+                - scrolls<br>
+                - form submission<br>
+                - key presses<br>
+                - focus/blur <br>
+                - mouse wheel<br>
+                - double click<br>
+                - copying<br>
+                - pasting<br>
+                - audio start <br>
+                - screen resize<br>
+                - printing<br>
+            Pero la manera en la cual incorporamos estos eventos en nuestro codigo siguen el mismo patron:<br>
+            Tenemos un primer elemento que es llamado the thing que escucha a la presencia de un determinado evento, el tipo de evento en sí,
+            y el codigo que quiero correr.<br>
+            The thing puede ser un boton, al cual cliqueo (evento), y el código puede ser ejemplo cambiar de color.<br>
+            Agreguemos algunos elementos:
+        </p>
+        <!--Esto es un ejemplo de algo que no se recomienda hacer, agregar inline event handlers. Existe otra manera de hacer esto, que es
+        seleccionar el elemento y luego agregar el onclick o onmouseover.-->
+
+        <!--Todos estos siguen el mismo patron: onEVENTNAME = "do something"-->
+        <!--Correr codigo cuando cliqueamos un botos mediante el atributo onclick. El primer event listener a un boton-->
+        <button onclick="alert('Me has cliqueado!!')">Cliqueame!</button>
+        <button onclick="alert('Me has cliqueado tambien!!')">Cliqueame!</button>
+        <button onmouseover="alert('Has pasado el mouse por aqui!!')">Cliqueame!</button>
+        <!--Tambien podemos agregar un segundo atributo: onclick y onmouseover-->
+
+        <!--Botones que realmente utilizaremos con javascript:-->
+        <button id="clicker">CLICKER</button>
+
+        <form action="">
+            <!--Podemos agregarle onclick a otras cosas como los inputs-->
+            <input onclick="console.log('has cliqueado el input')" type="range" min="10" max="50">
+        </form>
+
+        <h2>addEventListener</h2> 
+        <p>Ahora veremos porque la segunda manera que vimos en la leccion anterior no es la mejor, y luego veremos este metodo.</p>
+        <button id="btn">Cliqueame</button>
+
+        <h2>The imposible button demo</h2> 
+        <p>Un boton que cuando quieres acercarte a cliquearlo, se mueve y tienes que ir persiguiendolo para poder cliquearlo.</p>
+
+        <h2>Eventos en multiples elementos</h2> 
+        <p>¿Como creamos event listeners para multiples elementos?</p>
+        <h1 id="header-color">Elige algun color</h1>
+        <section id="boxes">
+
+        </section>
+
+        <h2>Objeto Event</h2> 
+        <p>Cuando un event listener se activa, no ejecutamos nosotros mismos la funcion, ejemplo, el change color de la leccion anterior. Sino que, es llamada por nosotros y en realidad le es pasado un valor, un objeto evento. 
+            En este objeto evento, a veces es extremadamente util tener acceso a nuestra callback en nuestro manejador de eventos.
+            Este event object tiene informacion acerca del evento.
+        </p>
+        <p id="info-tipeada"></p>
+
+        <h2>Key Events: Keypress, Keyup, Keydown</h2> 
+        <p>Hay al menos 3 opciones para "escuchar" el tecleado de teclas.</p>
+        <input id="username" placeholder="username" type="text">
+        <h3>Shopping List</h3>
+        <input type="text" id="addItem" placeholder="ingrese una comida">
+        <ul id="items"></ul>
+
+        <h2>Form Events y Prevent Default</h2> 
+        <p></p>
+        <form id="signup-form" action="/NOOOO" method="get"> <!--Toma los datos como input u los envia a algun lado, hecho de esta manera cuando le damos a submit se actualiza la página-->
+            <input name= "creditCard" type="text" placeholder="credit card" id = "cc">
+            <label>
+                Estoy de a cuerdo con ceder mi alma a tu compañia.
+                <input name = "agreeToTerms" type="checkbox" id="terms">
+            </label>
+            <select name = "selectedVeggie" name="" id="veggie">
+                <option value="eggplant">Eggplant</option>
+                <option value="asparagus">Asparagus</option>
+                <option value="carrot">Carrot</option>
+            </select>
+            <input type="submit">
+        </form>
+
+        <h2>Input y Change Events </h2> 
+        <p>Dos eventos muy similares.</p>
+        <h2>Seccion 16: Código asincrónico, llamadas de retorno y Promesas</h2>
+        <h2>Call Stack</h2> 
+        <p>Es una herramienta de JavaScript, es algo que veras en muchos otros programas.
+            Lo que hace es ayudar a JavaScript de mantener una orientacion de en que parte del codigo se encuentra.
+            Si tenes multiples funciones y algunas de ellas llama a otras funciones, call stack es el mecanismo por el cual
+            el interprete de JavaScript mantiene una orientacion de su lugar. Es la manera en la cual JavaScript sabe que funcion
+            es la que actualmente esta siendo ejecutada, que funciones no han terminado aun pero esperan resultados o valores de 
+            retorno. <br>
+            Podemos pensarlo de la siguiente manera, si nuestro script con un monton de funciones fuera un libro enorme, el call
+            stack es el marcador de libros o tu dedo que usar para buscar donde estas.<br>
+            El stack hace referencia a la estructura de computadoras llamada pila donde se va a almacenar todas aquellas funciones
+            que estan a la espera de finalizar.<br>
+            ¿Como funciona?<br>
+            Cuando un script llama a una funcion, el interprete agrega la misma al call stack y luego empieza a llevar a cabo la
+            funcion.<br>
+            Cualquier funcion que es llamada por esa funcion es agregada a la call stack arriba de todo, y corre donde sus llamadas son
+            alcanzadas.<br>
+            Cuando la funcion actual es finalizada, el interprete saca del stack y retoma la ejecucion en donde la dejo la ultima vez que lo corrio. 
+        </p>
+
+        <h2>JS es un lenguaje de un solo hilo o single threaded language</h2> 
+        <p> Cualquier punto dado en nuestro script, cualquier script que este siendo ejecutado, es ejecutado como mucho una linea de nuestro codigo JS
+            a la vez.
+            Hasta que una linea de codigo no finalice, no se continuará con el resto del codigo que falte. Esto puede llegar a ser una limitacion severa si 
+            hacemos cosas que tomen tiempo, si hacemos cosas que no sean inmediatas, no queremos tener un usuario sentado ahi esperando y no teniendo otro
+            codigo corriendo.
+            Nosotros tenemos una manera de evitar esto. 
+        </p>
+
+        <h2>Como las llamadas asincronicas realmente funcionan</h2>
+        <p> Como se ha mencionado en la leccion anterior, solemos hacer consultas o solicitudes que toman tiempo y que ese tiempo de espera es tiempo muerto.
+            Para aquellos procesos que timan tiempo, le pasamos una funcion callback o de retorno y esas funciones seran ejecutadas al tiempo apropiado despues 
+            de que el intervalo ha pasado, en el caso de el seteado de tiempo.<br>
+            El secreto aca es que el browser es el que hace el trabajo. Javascript no es la misma cosa que tu browser. Javascript es un lenguajes que es 
+            implementado en nuestro browser. Pero el browser en si mismo, como el chrome o el safari, etc, esos browsers son escritos usualmente en C++, un 
+            diferente lenguaje de programacion en el browser es capaz de hacer ciertas tareas que javascript no puede hacer o cosas que toman tiempo.
+            Ok, Pero, ¿Como?<br>
+            Los browsers vienen con APIs Web que son capaces de manejar ciertas tareas en el fondo (como el hacer requests o setTimeout).<br>
+            El call stack de Javascript reconoce estas funcones de APIs Web y las pasa a el browser para que se encargue de ellas.<br>
+            Una vez que el browser finaliza esas tareas, ellos son retornados y quitados de la pilla como un retorno de llamada (callback). 
+        </p>
+
+        <h2>Bienvenido al infierno de callbacks</h2>
+        <p>Ya vimos que el browser se encarga de esas tareas y el nos pasa un callback pero los callbacks no son perfectos. Pueden ensuciarse rapidamente, que es lo
+            que veremos aqui. Ahora veremos una manera de hacer algo con callbacks y despues veremos como refactorizarlo utilizando promeses.
+        </p>
+
+        <button id="btn-mover">Mueveme!</button>
+
+        <h2>Introduccion a Promises!</h2>
+        <p> En la leccion pasada vimos como usar un conjunto de callbacks y anidar cosas puede realmente irse de las manos. El código es largo y dificil de entender.
+            Existe un termino para esto que es el de CALLBACK HELL.<br>
+            Aquí es cuando promises aparece. Nos permite escribir codigo asincronico que es mucho mas facil de leer y entender.
+            Enter Promises: Una promesa es un objeto representando la eventual terminacion o fallo de una operacion asincronica. 
+            Es normalmente cortas pero si, incluso, no es corta en terminos de numero de caracteres, es mas liviano. Normalmente, no esta anidado. 
+            Tenemos que hablar acerca de las bases de Promises: un patron para escribir codigo asincronico.
+            Hay que entender como crear una promise, como se puede crear una funcion que retorna una promise.
+            Y tambien como uno consume o interactua con las promesas que lo hacemos todo el tiempo. Incluso si no estamos escribiendo las promesas nosotros mismso,
+            podemos estar haciendo una consulta desde una libreria o usando una liberia como axiomas. Retorna muchas de estas funciones promesas.
+            Entonces promise es una manera de prometer un valor que probablemente no tengas en el momento.<br>
+            Entonces el objeto que es retornado en el mientras tanto es una promesa y lo que hacemos es que adjuntamos callbacks a ese objeto. No pasamos en callback o un simple callback 
+            a una funcion y anidamos un conjunto de cosas. Una promesa es un objeto retornado donde puedes adjuntar callbacks, en vez de pasar callbacks dentro de una funcion.
+            
+        </p>
+
+        <h2>Rechazar o resolver promesas con un valor</h2>
+        <p>La siguiente cosas que necesitas saber acerca de las promesas es que cuando uno rechaza o resuelve una promesa puede rechazar o resolver con un valor. Y, tenemos acceso a ese valor en
+            nuestro callback que pasa en el then y el catch. La mayoria de las veces no estamos esperando que se ejecuten de manera random el rechazo o aceptacion de una promesa, queremos saber 
+            porque una cosa fue rechazada, por ejemplo, en el caso de un http request porque eso fallo y si no fallo, si fue resuelto, cual fue la informacion que se obtuvo de retorno. Este es
+            el punto de hacer un request al menos, la mayoria del tiempo es que estas intentando obtener alguna informacion. Entonces vamos a hacer una funcion de request falsa.
+        </p>
+        <h2>Las delicias del promise chaining</h2>
+        <p></p>
+        <a href="../index.html" id="Home" >HOME</a>
+        <script src="Anotaciones_Curso_Javascript.js"></script> 
+        
+    </body>
+
+</html>

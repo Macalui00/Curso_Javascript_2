@@ -1642,30 +1642,145 @@ Usando promises se soluciona el problema de que sea codigo anidado y feo.
 //La manera en la que hacemos nuevas promesas:
 // cont willGetYouADog = new Promise ((resolve, reject)=>{
 //     resolve();
-// })
-//Porque no creamos una funcion que de manera random se resuelva o se rechace.
+// });
+//creemos una funcion que retorne una promesa
 
-var willGetYouADog = new Promise(function (resolve, reject) {
-  var rand = Math.random();
+var makeDogPromise = function makeDogPromise() {
+  //Porque no creamos una funcion que de manera random se resuelva o se rechace.
+  var willGetYouADog = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      var rand = Math.random();
 
-  if (rand < 0.5) {
-    resolve();
-  } else {
-    reject();
-  }
+      if (rand < 0.5) {
+        resolve();
+      } else {
+        reject();
+      }
 
-  ;
-});
-willGetYouADog().then(function () {
+      ;
+    }, 5000);
+  });
+};
+
+makeDogPromise().then(function () {
   //Este codigo se corre cuando la promesa se resuelve
   console.log("YAY TENEMOS UN CODIGO");
 })["catch"](function () {
   //El catch lo podemos enlazar así, o por separado con un willGetYouADog.catch(...)
   console.log("NO DOG");
-});
-willGetYouADog();
-willGetYouADog();
-willGetYouADog();
-willGetYouADog(); //Entonces esto fue como creamos una promesa, lo siguiente y extremadamente importante es como interactuamos con la promesa.
+}); // willGetYouADog().then(() => {
+//     //Este codigo se corre cuando la promesa se resuelve
+//     console.log("YAY TENEMOS UN CODIGO")
+// }).catch(() => {
+//     //El catch lo podemos enlazar así, o por separado con un willGetYouADog.catch(...)
+//     console.log("NO DOG");
+// });
+// willGetYouADog();
+// willGetYouADog();
+// willGetYouADog();
+// willGetYouADog();
+//Entonces esto fue como creamos una promesa, lo siguiente y extremadamente importante es como interactuamos con la promesa.
 //Como corro código si la promesa fue rechazada o resuelta. Aqui es cunado conocemos al .then
 //cada promesa tiene un metodo then y un metodo llamado catch
+//Algo que tambien solemos hacer es retornar una promesa en una funcion. 
+
+/*------------------------------------------------------------------------------------*/
+//Rechazando o resolviendo con valores
+// const fakeRequest = (url) => {
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             const pages = {
+//                     "/users":[
+//                         {id: 1, username: "Bilbo"},
+//                         {id: 5, username: "Esmeralda"}
+//                     ], "/about": "This is the about page!"
+//                 };
+//                 //Revisamos si el url esta en pages
+//                 const data = pages[url]
+//                 if (data){
+//                     resolve({status: 200, data });
+//                 }else{//La Pagina que estas buscando no fue encontrada.
+//                     reject({status: 404});
+//                 }
+//         },3000);
+//     });
+// };
+// //Buscamos la pagina /about
+// fakeRequest("/about").then((response)=>{
+//     console.log("Status code",response.status);
+//     console.log("Data",response.data);
+//     console.log("REQUEST WORKED!");
+// }).catch((response)=>{
+//     console.log(response.status);
+//     console.log("REQUEST FAILED");
+// });
+// //Buscamos la pagina /users
+// fakeRequest("/about").then((response)=>{
+//     console.log("Status code",response.status);
+//     console.log("Data",response.data);
+//     console.log("REQUEST WORKED!");
+// }).catch((response)=>{
+//     console.log(response.status);
+//     console.log("REQUEST FAILED");
+// });
+// //Buscamos una pagina inexistente:
+// fakeRequest("/dogs").then((response)=>{
+//     console.log("Status code",response.status);
+//     console.log("Data",response.data);
+//     console.log("REQUEST WORKED!");
+// }).catch((response)=>{
+//     console.log(response.status);
+//     console.log("REQUEST FAILED");
+// });
+
+/*------------------------------------------------------------------------------*/
+//Promises chainning:
+//UPDATE DE LA FUNCION FAKE REQUEST: DONDE PODEMOS HACER UN SEGUNDO REQUEST PARA OBTENER MAS INFOMACION ACERCA DEL USER.
+
+var fakeRequest = function fakeRequest(url) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      var pages = {
+        "/users": [{
+          id: 1,
+          username: "Bilbo"
+        }, {
+          id: 5,
+          username: "Esmeralda"
+        }],
+        "/users/1": {
+          id: 1,
+          username: "Bilbo",
+          upvotes: 360,
+          city: "Lisbon",
+          topPostId: 454321
+        },
+        "/users/5": {
+          id: 5,
+          username: "Esmeralda",
+          upvotes: 571,
+          city: "Honolulu"
+        },
+        '/posts/454321': {
+          id: 454321,
+          title: 'Ladies & Gentlemen, may I introduce my pet pig, Hamlet'
+        },
+        "/about": "This is the about page!"
+      }; //Revisamos si el url esta en pages
+
+      var data = pages[url];
+
+      if (data) {
+        resolve({
+          status: 200,
+          data: data
+        });
+      } else {
+        //La Pagina que estas buscando no fue encontrada.
+        reject({
+          status: 404
+        });
+      }
+    }, 3000);
+  });
+};
