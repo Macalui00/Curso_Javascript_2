@@ -1,0 +1,121 @@
+body{
+    background-color: mistyrose;
+    font-family: "Open Sans", sans-serif;
+    text-decoration: none;
+  }
+
+  
+  h1 {
+    color: purple;
+    font-size: 30px;
+    padding-left: 20px;
+    text-transform:uppercase;
+  }
+  
+  h1:hover {
+    color: orange;
+    font-size: 40px;
+  }
+  
+  h2,h3{
+    color: rgb(102, 40, 131);
+    padding-left: 20px;
+    text-transform:uppercase;
+  }
+  
+  p{
+    text-align: justify;
+    color: rgb(100, 100, 100);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    /*white-space: pre-line;*/
+  }
+  
+  pre {
+    overflow: auto;
+    overflow-x: auto;
+    max-width:40%; 
+  }
+  
+  pre {
+    display: block;
+    margin-left: 20px;
+    padding: 20px;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    text-align: left;
+    white-space: pre-line;
+    direction:ltr;
+    line-height: 1;
+    color: rgb(228, 227, 227);
+    background-color: #6e7174;
+  }
+  
+  form,ul,button,a, #addItem, #username{
+    margin-left: 20px;
+  }
+  
+  #bear-photo {
+    width: 250px;
+  }
+  
+  .special {
+    color: teal;
+    font-size: 30px;
+    border: 1px solid teal;
+  }
+  
+  input[type="password"] {
+    height: 50px;
+    width: 100px;
+  }
+  
+  .todo{
+    font-size:30px;
+    color: olive;
+  }
+  
+  .done{
+    color: gray;
+    text-decoration: lin-through;
+    opacity: 50%;
+  }
+  #boxes{
+    display: flex; /*una manera relativamente facil de posicionar elementos en la pagina dividir el espacio.*/
+    justify-content: center;
+    align-items: center;
+  }
+  .box{
+    width: 200px;
+    height: 200px;
+    /* margin-left: 20px; */
+  }
+  #header-color{
+    text-align: center;
+  }
+  
+  #btn-mover{
+    font-size: 40px;
+    background-color: rgba(210, 105, 30, 0.246);
+    border: 1px solid burlywood;
+  }
+  
+  #info-tipeada{
+    border: 1px solid rebeccapurple;
+    width: 60%;
+    margin-left: 20px;
+  }
+  
+  #Home{
+    padding:10px;
+    width: 47px;
+    display: block;
+    background-color:#ceb7c9;
+    color: rgb(119, 119, 119);
+    font-weight:400;
+    font-size:15px;
+    letter-spacing:1px;
+    text-decoration: none;
+  }
