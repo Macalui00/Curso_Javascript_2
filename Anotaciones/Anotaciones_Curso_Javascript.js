@@ -1984,3 +1984,56 @@ const fakeRequest = (url) => {
         },3000);
     });
 };
+
+fakeRequest("/users").then((res) => {
+    // console.log(res.data(0).id);
+    const id = res.data(0).id;
+    fakeRequest(`/users/${id}`).then((res) =>
+    {
+        const postId = res.data.topPostId;
+        // console.log(res);
+        fakeRequest(`/posts/${postId}`).then((res) =>{
+            console.log(res);
+        });
+    });
+})
+.catch((err) =>{
+    console.log('Oh No!', err);
+});
+
+fakeRequest("/files").then((res) => {
+    // console.log(res.data(0).id);
+    const id = res.data(0).id;
+    fakeRequest(`/users/${id}`).then((res) =>
+    {
+        const postId = res.data.topPostId;
+        // console.log(res);
+        fakeRequest(`/posts/${postId}`).then((res) =>{
+            console.log(res);
+        });
+    });
+})
+.catch((err) =>{
+    console.log('Oh No!', err);
+});
+//el tema es que necesitamos un catch para cada cosa, por lo que hay una mejor manera de reescribir esto:
+
+fakeRequest("/files").then((res) => {
+    // console.log(res.data(0).id);
+    console.logs(res);
+    const id = res.data(0).id;
+    return fakeRequest(`/users/${id}`)
+})
+.then((res) =>{
+    console.logs(res);
+    const postId = res.data.topPostId;
+    return fakeRequest(`/posts/${postId}`) 
+}).then((res) =>{
+    console.log(res);
+})
+.catch((err) =>{
+    console.log('Oh No!', err);
+});
+
+/*Entonces de esta manera no nos preocupamos de los .then y catch anidados, los podemos hacer de esta manera, y si alguna promesa falla
+podemos utilizar el mismo catch para todas.*/
